@@ -1,14 +1,16 @@
 {
-    "name": "melonsmasher/ethos-php",
-    "description": "A PHP library to interact with the Ellucian Ethos API.",
-    "type": "library",
-    "homepage": "https://github.com/MelonSmasher/ethos-php",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Alex Markessinis",
-            "email": "markea125@gmail.com"
-        }
-    ],
-    "require": {}
+  "name": "melonsmasher/ethos-php",
+  "description": "A PHP library to interact with the Ellucian Ethos API.",
+  "type": "library",
+  "homepage": "https://github.com/MelonSmasher/ethos-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alex Markessinis",
+      "email": "markea125@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.*"
+  }
 }
