@@ -24,17 +24,17 @@
 <path fill="none" stroke="gray" d="M36,-24C36,-24 295,-24 295,-24 301,-24 307,-30 307,-36 307,-36 307,-138 307,-138 307,-144 301,-150 295,-150 295,-150 36,-150 36,-150 30,-150 24,-144 24,-138 24,-138 24,-36 24,-36 24,-30 30,-24 36,-24"/>
 <text text-anchor="middle" x="165.5" y="-137.2" font-family="Times,serif" font-size="11.00" fill="gray">EthosPHP</text>
 </g>
-<!-- \\MelonSmasher\\EthosPHP\\PersonsClient -->
-<g id="node1" class="node">
-<title>\\MelonSmasher\\EthosPHP\\PersonsClient</title>
-<polygon fill="none" stroke="black" points="299,-122 195,-122 195,-86 299,-86 299,-122"/>
-<text text-anchor="middle" x="247" y="-101.2" font-family="Courier,monospace" font-size="11.00">PersonsClient</text>
-</g>
 <!-- \\MelonSmasher\\EthosPHP\\EthosClient -->
-<g id="node2" class="node">
+<g id="node1" class="node">
 <title>\\MelonSmasher\\EthosPHP\\EthosClient</title>
 <polygon fill="none" stroke="black" points="123,-122 32,-122 32,-86 123,-86 123,-122"/>
 <text text-anchor="middle" x="77.5" y="-101.2" font-family="Courier,monospace" font-size="11.00">EthosClient</text>
+</g>
+<!-- \\MelonSmasher\\EthosPHP\\PersonsClient -->
+<g id="node2" class="node">
+<title>\\MelonSmasher\\EthosPHP\\PersonsClient</title>
+<polygon fill="none" stroke="black" points="299,-122 195,-122 195,-86 299,-86 299,-122"/>
+<text text-anchor="middle" x="247" y="-101.2" font-family="Courier,monospace" font-size="11.00">PersonsClient</text>
 </g>
 <!-- \\MelonSmasher\\EthosPHP\\PersonsClient&#45;&gt;\\MelonSmasher\\EthosPHP\\EthosClient -->
 <g id="edge1" class="edge">
