@@ -3,7 +3,17 @@
 
 namespace MelonSmasher\EthosPHP;
 
-
+/**
+ * Class EthosClient
+ *
+ * Base class used to set the API key (a.k.a. refresh token), API base URL, and API version.
+ * Also used for low level API communication.
+ *
+ * @package MelonSmasher
+ * @license MIT
+ * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
+ * @author Alex Markessinis
+ */
 class EthosClient
 {
     /**

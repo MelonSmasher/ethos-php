@@ -5,9 +5,9 @@ namespace MelonSmasher\EthosPHP;
 use GuzzleHttp\Client;
 
 /**
- * Class EthosClient
+ * Class Ethos
  *
- * Base class used to set the API key (a.k.a. refresh token), API base URL, and API version.
+ * Base class used to build the Ethos session.
  *
  * @package MelonSmasher
  * @license MIT
