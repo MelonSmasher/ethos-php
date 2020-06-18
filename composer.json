@@ -10,7 +10,30 @@
       "email": "markea125@gmail.com"
     }
   ],
+  "support": {
+    "issues": "https://github.com/MelonSmasher/ethos-php/issues",
+    "source": "https://github.com/MelonSmasher/ethos-php"
+  },
   "require": {
     "php": ">=7.2.*"
+  },
+  "require-dev": {
+    "phpdocumentor/phpdocumentor": "2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "MelonSmasher\\": "src/",
+      "MelonSmasher\\Client\\": "src/Client/"
+    }
+  },
+  "scripts": {
+    "docs": [
+      "vendor/bin/phpdoc -d src/ -t docs/ --cache-folder docCache/"
+    ]
+  },
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
   }
 }
