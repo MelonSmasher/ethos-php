@@ -23,8 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MelonSmasher\\ethosPHP\\": "src/",
-      "MelonSmasher\\ethosPHP\\Client\\": "src/Models/"
+      "MelonSmasher\\EthosPHP\\": "src/"
     }
   },
   "scripts": {

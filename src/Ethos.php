@@ -1,11 +1,11 @@
 <?php
 
-namespace MelonSmasher\ethosPHP;
+namespace MelonSmasher\EthosPHP;
 
 use GuzzleHttp\Client;
 
 /**
- * Class Ethos
+ * Class EthosClient
  *
  * Base class used to set the API key (a.k.a. refresh token), API base URL, and API version.
  *
@@ -14,44 +14,8 @@ use GuzzleHttp\Client;
  * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
  * @author Alex Markessinis
  */
-class Ethos
+final class Ethos
 {
-    /**
-     * ethos-php version
-     *
-     * This string defines the client version
-     *
-     * @var string
-     */
-    protected $version = '0.0.1';
-
-    /**
-     * JSON Web Token
-     *
-     * The current JWT for the authenticated session.
-     *
-     * @var null|string
-     */
-    public $jwt = null;
-
-    /**
-     * Ethos API Version
-     *
-     * The version of the API to send a request to.
-     *
-     * @var string
-     */
-    public $apiVersion = '12.1.0';
-
-    /**
-     * Base API URL
-     *
-     * The base API url used to communicate with Ethos.
-     *
-     * @var string
-     */
-    public $baseURL = 'https://integrateapi.elluciancloud.com';
-
     /**
      * HTTP Client
      *
@@ -62,13 +26,49 @@ class Ethos
     public $httpClient;
 
     /**
+     * ethos-php version
+     *
+     * This string defines the client version
+     *
+     * @var string
+     */
+    private $version = '0.0.1';
+
+    /**
+     * JSON Web Token
+     *
+     * The current JWT for the authenticated session.
+     *
+     * @var null|string
+     */
+    private $jwt = null;
+
+    /**
+     * Ethos API Version
+     *
+     * The version of the API to send a request to.
+     *
+     * @var string
+     */
+    private $apiVersion;
+
+    /**
+     * Base API URL
+     *
+     * The base API url used to communicate with Ethos.
+     *
+     * @var string
+     */
+    private $baseURL;
+
+    /**
      * API key / secret / refresh token
      *
      * The API key used to authenticate with the API. Used to obtain a JWT / session token.
      *
      * @var null|string
      */
-    protected $secret = null;
+    private $secret = null;
 
     /**
      * Ethos constructor.
@@ -79,7 +79,7 @@ class Ethos
      * @param string $baseURL
      * @param string $apiVersion
      */
-    function __construct($secret, $baseURL = 'https://integrateapi.elluciancloud.com', $apiVersion = '12.1.0')
+    function __construct($secret, $baseURL, $apiVersion)
     {
         // Set the secret property
         $this->secret = $secret;
@@ -96,7 +96,7 @@ class Ethos
      *
      * Builds a new authenticated session and sets a new `httpClient`.
      */
-    public function reAuthenticate()
+    public function reauthenticate()
     {
         // Authenticate with the Ethos API using the API key / secret / refresh token
         $this->authenticate();
