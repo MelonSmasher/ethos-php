@@ -25,7 +25,7 @@ class EthosClient
      *
      * The version of the API to use with this request.
      *
-     * @var string|boolean
+     * @var string|bool
      */
     public $bannerApiVersion;
 
@@ -41,16 +41,88 @@ class EthosClient
     /**
      * Base Route
      *
-     * The base API route
+     * The base API route.
      *
      * @var string
      */
     protected $baseRoute = '/api';
 
     /**
+     * Can Create Colleague
+     *
+     * Determines if the resource is available for creates using Colleague as the backend.
+     *
+     * @var bool
+     */
+    protected $canCreateColleague = true;
+
+    /**
+     * Can Read Colleague
+     *
+     * Determines if the resource is available for reads using Colleague as the backend.
+     *
+     * @var bool
+     */
+    protected $canReadColleague = true;
+
+    /**
+     * Can Update Colleague
+     *
+     * Determines if the resource is available for updates using Colleague as the backend.
+     *
+     * @var bool
+     */
+    protected $canUpdateColleague = true;
+
+    /**
+     * Can Delete Colleague
+     *
+     * Determines if the resource is available for deletes using Colleague as the backend.
+     *
+     * @var bool
+     */
+    protected $canDeleteColleague = true;
+
+    /**
+     * Can Create Banner
+     *
+     * Determines if the resource is available for creates using Banner as the backend
+     *
+     * @var bool
+     */
+    protected $canCreateBanner = true;
+
+    /**
+     * Can Read Banner
+     *
+     * Determines if the resource is available for reads using Banner as the backend
+     *
+     * @var bool
+     */
+    protected $canReadBanner = true;
+
+    /**
+     * Can Update Banner
+     *
+     * Determines if the resource is available for updates using Banner as the backend
+     *
+     * @var bool
+     */
+    protected $canUpdateBanner = true;
+
+    /**
+     * Can Delete Banner
+     *
+     * Determines if the resource is available for deletes using Banner as the backend
+     *
+     * @var bool
+     */
+    protected $canDeleteBanner = true;
+
+    /**
      * Ethos Session
      *
-     * The Ethos session object
+     * The Ethos session object.
      *
      * @var Ethos
      */
@@ -75,30 +147,13 @@ class EthosClient
      *
      * @param $secret
      * @param string $baseURL
-     * @param string $erpBackend
+     * @param ErpBackend $erpBackend
      *
      * @return Ethos
      */
     public static function createSession($secret, $baseURL = 'https://integrate.elluciancloud.com', $erpBackend = ErpBackend::COLLEAGUE)
     {
         return new Ethos($secret, $baseURL, $erpBackend);
-    }
-
-    /**
-     * Get
-     *
-     * Performs a get on the base route with any additional params or headers supplied.
-     *
-     * @param array $params
-     * @param array $headers
-     *
-     * @return ResponseInterface
-     *
-     * @throws GuzzleException
-     */
-    public function get($params = [], $headers = [])
-    {
-        return $this->sendGetRequest($this->baseRoute, $params, $headers);
     }
 
     /**
@@ -112,6 +167,170 @@ class EthosClient
     {
         if ($this->_ethos->erpBackend === ErpBackend::COLLEAGUE) return $this->colleagueApiVersion;
         if ($this->_ethos->erpBackend === ErpBackend::BANNER) return $this->bannerApiVersion;
+    }
+
+    /**
+     * Can Create
+     *
+     * Uses the selected API backend to determine the create action is available.
+     *
+     * @return bool
+     */
+    public function canPerformCreate()
+    {
+        if ($this->_ethos->erpBackend === ErpBackend::BANNER) return $this->canCreateBanner;
+        if ($this->_ethos->erpBackend === ErpBackend::COLLEAGUE) return $this->canCreateColleague;
+    }
+
+    /**
+     * Can Read
+     *
+     * Uses the selected API backend to determine the read action is available.
+     *
+     * @return bool
+     */
+    public function canPerformRead()
+    {
+        if ($this->_ethos->erpBackend === ErpBackend::BANNER) return $this->canReadBanner;
+        if ($this->_ethos->erpBackend === ErpBackend::COLLEAGUE) return $this->canReadColleague;
+    }
+
+    /**
+     * Can Update
+     *
+     * Uses the selected API backend to determine the update action is available.
+     *
+     * @return bool
+     */
+    public function canPerformUpdate()
+    {
+        if ($this->_ethos->erpBackend === ErpBackend::BANNER) return $this->canUpdateBanner;
+        if ($this->_ethos->erpBackend === ErpBackend::COLLEAGUE) return $this->canUpdateColleague;
+    }
+
+    /**
+     * Can Delete
+     *
+     * Uses the selected API backend to determine the delete action is available.
+     *
+     * @return bool
+     */
+    public function canPerformDelete()
+    {
+        if ($this->_ethos->erpBackend === ErpBackend::BANNER) return $this->canDeleteBanner;
+        if ($this->_ethos->erpBackend === ErpBackend::COLLEAGUE) return $this->canDeleteColleague;
+    }
+
+    /**
+     * Create
+     *
+     * Performs a POST on the base route with any additional params or headers supplied.
+     *
+     * @param $data
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface|bool
+     *
+     * @throws GuzzleException
+     */
+    public function create($data, $params = [], $headers = [])
+    {
+        if ($this->canPerformCreate()) {
+            return $this->sendPostRequest($this->baseRoute, $data, $params, $headers);
+        }
+
+        trigger_error('Unable to perform create action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
+    }
+
+    /**
+     * Read
+     *
+     * Performs a GET on the base route with any additional params or headers supplied.
+     *
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface|bool
+     *
+     * @throws GuzzleException
+     */
+    public function read($params = [], $headers = [])
+    {
+        if ($this->canPerformRead()) {
+            return $this->sendGetRequest($this->baseRoute, $params, $headers);
+        }
+
+        trigger_error('Unable to perform read action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
+    }
+
+    /**
+     * Read Head
+     *
+     * Performs a HEAD on the base route with any additional params or headers supplied.
+     *
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface|bool
+     *
+     * @throws GuzzleException
+     */
+    public function readHead($params = [], $headers = [])
+    {
+        if ($this->canPerformRead()) {
+            return $this->sendHeadRequest($this->baseRoute, $params, $headers);
+        }
+
+        trigger_error('Unable to perform read head action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
+    }
+
+    /**
+     * Update
+     *
+     * Performs a PUT on the base route with any additional params or headers supplied.
+     *
+     * @param $data
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface|bool
+     *
+     * @throws GuzzleException
+     */
+    public function update($data, $params = [], $headers = [])
+    {
+        if ($this->canPerformUpdate()) {
+            return $this->sendPutRequest($this->baseRoute, $data, $params, $headers);
+        }
+
+        trigger_error('Unable to perform update action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
+    }
+
+    /**
+     * Delete
+     *
+     * Performs a DELETE on the base route with any additional params or headers supplied.
+     *
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface|bool
+     *
+     * @throws GuzzleException
+     */
+    public function delete($params = [], $headers = [])
+    {
+        if ($this->canPerformDelete()) {
+            return $this->sendDeleteRequest($this->baseRoute, $params, $headers);
+        }
+
+        trigger_error('Unable to perform delete action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
     }
 
     /**
@@ -138,6 +357,7 @@ class EthosClient
      * Low level HTTP POST interface
      *
      * @param null|string $uri
+     * @param string $data
      * @param array $params
      * @param array $headers
      *
@@ -145,10 +365,10 @@ class EthosClient
      *
      * @throws GuzzleException
      */
-    protected function sendPostRequest($uri, $params = [], $headers = [])
+    protected function sendPostRequest($uri, $data, $params = [], $headers = [])
     {
         // Return the response
-        return $this->_request('POST', $uri, $params, $headers);
+        return $this->_request('POST', $uri, $params, $headers, $data);
     }
 
     /**
@@ -157,6 +377,7 @@ class EthosClient
      * Low level HTTP PUT interface
      *
      * @param null|string $uri
+     * @param string $data
      * @param array $params
      * @param array $headers
      *
@@ -164,10 +385,10 @@ class EthosClient
      *
      * @throws GuzzleException
      */
-    protected function sendPutRequest($uri, $params = [], $headers = [])
+    protected function sendPutRequest($uri, $data, $params = [], $headers = [])
     {
         // Return the response
-        return $this->_request('PUT', $uri, $params, $headers);
+        return $this->_request('PUT', $uri, $params, $headers, $data);
     }
 
     /**
@@ -217,12 +438,13 @@ class EthosClient
      * @param null|string $uri
      * @param array $params
      * @param array $headers
+     * @param null|string $data
      *
      * @return ResponseInterface
      *
      * @throws GuzzleException
      */
-    private function _request($method, $uri = null, $params = [], $headers = [])
+    private function _request($method, $uri = null, $params = [], $headers = [], $data = null)
     {
         // Check for a uri if one is provided use it otherwise use the base route set on the class
         $uri = (empty($uri)) ? $this->baseRoute : $uri;
@@ -233,6 +455,7 @@ class EthosClient
             // If the version string is empty send an unversioned API call.
             // If the version string is set create the Accept header.
             $headers['Accept'] = (empty($this->apiVersion())) ? '*/*' : 'application/vnd.hedtech.integration.v' . $this->apiVersion() . '+json';
+            $headers['content-type'] = (empty($this->apiVersion())) ? '*/*' : 'application/vnd.hedtech.integration.v' . $this->apiVersion() . '+json';
             // If there is no API version available for the selected backend throw a warning
             if ($this->apiVersion() === false) {
                 trigger_error('No data model version available for selected ERP backend '
@@ -245,6 +468,9 @@ class EthosClient
             'query' => $params,
             'headers' => array_merge($headers, $this->_ethos->httpClient->getConfig()['headers'])
         ];
+
+        // If there is a request body add it to the request
+        if (!empty($data)) $options['body'] = $data;
 
         // Try to send the request
         try {
