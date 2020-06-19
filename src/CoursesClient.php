@@ -5,16 +5,16 @@ namespace MelonSmasher\EthosPHP;
 
 
 /**
- * Class PersonsClient
+ * Class CoursesClient
  *
- * Persons class used to interact with the Persons data type.
+ * Courses class used to interact with the Courses data type.
  *
  * @package MelonSmasher
  * @license MIT
  * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
  * @author Alex Markessinis
  */
-class PersonsClient extends EthosClient
+class CoursesClient extends EthosClient
 {
 
     /**
@@ -24,7 +24,7 @@ class PersonsClient extends EthosClient
      *
      * @var string
      */
-    protected $baseRoute = '/api/persons';
+    protected $baseRoute = '/api/courses';
 
     /**
      * get

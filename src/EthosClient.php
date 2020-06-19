@@ -1,6 +1,11 @@
 <?php
 
+
 namespace MelonSmasher\EthosPHP;
+
+use GuzzleHttp\Exception\ClientException;
+use Psr\Http\Message\ResponseInterface;
+
 
 /**
  * Class EthosClient
@@ -25,13 +30,13 @@ class EthosClient
     private $ethos;
 
     /**
-     * Authentication Failures
+     * Base Route
      *
-     * The amount of authentication failures.
+     * The base API route
      *
-     * @var int
+     * @var string
      */
-    private $authFails = 0;
+    protected $baseRoute = '/api';
 
     /**
      * CreateSession
@@ -43,9 +48,9 @@ class EthosClient
      * @param string $apiVersion
      * @return Ethos
      */
-    public static function createSession($secret, $baseURL = 'https://integrateapi.elluciancloud.com', $apiVersion = '12.1.0')
+    public static function createSession($secret, $baseURL = 'https://integrate.elluciancloud.com')
     {
-        return new Ethos($secret, $baseURL, $apiVersion);
+        return new Ethos($secret, $baseURL);//, $apiVersion);
     }
 
     /**
@@ -65,35 +70,144 @@ class EthosClient
      *
      * Renews the authenticated Ethos session.
      */
-    public function reauthenticate()
+    private function reauthenticate()
     {
         $this->ethos->reauthenticate();
     }
 
-    // @todo base communication functions
-
-    private function _get($uri, $params = [])
+    /**
+     * _request
+     *
+     * Low level HTTP request interface
+     *
+     * @param string $method
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     * @return ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    private function _request($method, $uri = null, $params = [], $headers = [])
     {
+        // Check for a uri if one is provided use it otherwise use the base route set on the class
+        $uri = (empty($uri)) ? $this->baseRoute : $uri;
 
+        // Set any query params and merge any new headers with the main header array
+        $options = [
+            'query' => $params,
+            'headers' => array_merge($headers, $this->ethos->httpClient->getConfig()['headers'])
+        ];
+
+        // Try to send the request
+        try {
+            // Store the response
+            $response = $this->ethos->httpClient->request($method, $uri, $options);
+        } catch (ClientException $e) {
+            // If an exception was thrown check to see if it was a 401
+            if ($e->getResponse()->getStatusCode() === 401) {
+                // If it was a 401, reauthenticate
+                $this->reauthenticate();
+                // Try to send the request once more
+                // Throw an exception this time if things don't go well
+                $response = $this->ethos->httpClient->request($method, $uri, $options);
+            } else {
+                // If not a 401 actually throw the exception
+                throw new ClientException(
+                    $e->getMessage(),
+                    $e->getRequest(),
+                    $e->getResponse(),
+                    $e->getPrevious(),
+                    $e->getHandlerContext()
+                );
+            }
+        }
+
+        // Return the response
+        return $response;
     }
 
-    private function _post($uri, $params = [])
+    /**
+     * _get
+     *
+     * Low level HTTP GET interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     * @return ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    protected function _get($uri = null, $params = [], $headers = [])
     {
-
+        // Return the response
+        return $this->_request('GET', $uri, $params, $headers);
     }
 
-    private function _put($uri, $params = [])
+    /**
+     * _post
+     *
+     * Low level HTTP POST interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     * @return ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    protected function _post($uri, $params = [], $headers = [])
     {
-
+        // Return the response
+        return $this->_request('POST', $uri, $params, $headers);
     }
 
-    private function _delete($uri, $params = [])
+    /**
+     * _put
+     *
+     * Low level HTTP PUT interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     * @return ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    protected function _put($uri, $params = [], $headers = [])
     {
-
+        // Return the response
+        return $this->_request('PUT', $uri, $params, $headers);
     }
 
-    private function _head($uri, $params = [])
+    /**
+     * _delete
+     *
+     * Low level HTTP DELETE interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     * @return ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    protected function _delete($uri, $params = [], $headers = [])
     {
+        // Return the response
+        return $this->_request('DELETE', $uri, $params, $headers);
+    }
 
+    /**
+     * _head
+     *
+     * Low level HTTP HEAD interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     * @return ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    protected function _head($uri, $params = [], $headers = [])
+    {
+        // Return the response
+        return $this->_request('HEAD', $uri, $params, $headers);
     }
 }
