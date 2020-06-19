@@ -88,9 +88,9 @@
 
                 <!-- PHP Code Sniffer findings -->
 
-                <source type="phpcs">
+                <!--<source type="phpcs">
                     <file name="phpcs.xml" />
-                </source>
+                </source>-->
 
 
                 <!-- PHPMessDetector -->

@@ -25,7 +25,7 @@ final class Ethos
     public $httpClient;
 
     /**
-     * ethos-php version.
+     * Ethos-php version.
      *
      * This string defines the client version
      *
@@ -43,15 +43,6 @@ final class Ethos
     private $_jwt = null;
 
     /**
-     * Ethos API Version.
-     *
-     * The version of the API to send a request to.
-     *
-     * @var string
-     */
-    //private $_apiVersion;
-
-    /**
      * Base API URL.
      *
      * The base API url used to communicate with Ethos.
@@ -63,11 +54,21 @@ final class Ethos
     /**
      * API key / secret / refresh token.
      *
-     * The API key used to authenticate with the API. Used to obtain a JWT / session token.
+     * The API key used to authenticate with the API.
      *
      * @var string|null
      */
     private $_secret;
+
+    /*
+     * Ethos API Version.
+     *
+     * The version of the API to send a request to.
+     *
+     * @var string
+     * @todo work out how to use versioned API calls
+     */
+    //private $_apiVersion;
 
     /**
      * Ethos constructor.
@@ -137,8 +138,8 @@ final class Ethos
                 //'http_errors' => false,
                 'base_uri' => $this->_baseURL,
                 'headers' => [
-                    'Authorization' => 'Bearer '.$this->_jwt,
-                    'User-Agent' => 'MelonSmasher/ethos-php/'.$this->_version,
+                    'Authorization' => 'Bearer ' . $this->_jwt,
+                    'User-Agent' => 'MelonSmasher/ethos-php/' . $this->_version,
                     //'Accept' => 'application/vnd.hedtech.integration.v' . $this->_apiVersion . '+json'
                 ],
             ]);
@@ -152,8 +153,8 @@ final class Ethos
         return $client = new Client([
             'base_uri' => $this->_baseURL,
             'headers' => [
-                'Authorization' => 'Bearer '.$secret,
-                'User-Agent' => 'MelonSmasher/ethos-php/'.$this->_version,
+                'Authorization' => 'Bearer ' . $secret,
+                'User-Agent' => 'MelonSmasher/ethos-php/' . $this->_version,
                 //'Accept' => 'application/vnd.hedtech.integration.v' . $this->_apiVersion . '+json'
             ],
         ]);

@@ -39,21 +39,6 @@ class EthosClient
     protected $baseRoute = '/api';
 
     /**
-     * CreateSession
-     *
-     * Creates a new authenticated Ethos session
-     *
-     * @param $secret
-     * @param string $baseURL
-     * @param string $apiVersion
-     * @return Ethos
-     */
-    public static function createSession($secret, $baseURL = 'https://integrate.elluciancloud.com')
-    {
-        return new Ethos($secret, $baseURL);//, $apiVersion);
-    }
-
-    /**
      * EthosClient constructor
      *
      * The base Ethos API client.
@@ -66,13 +51,129 @@ class EthosClient
     }
 
     /**
-     * Reauthenticate
+     * CreateSession
      *
-     * Renews the authenticated Ethos session.
+     * Creates a new authenticated Ethos session
+     *
+     * @param $secret
+     * @param string $baseURL
+     *
+     * @return Ethos
      */
-    private function reauthenticate()
+    public static function createSession($secret, $baseURL = 'https://integrate.elluciancloud.com')
     {
-        $this->_ethos->reauthenticate();
+        return new Ethos($secret, $baseURL);//, $apiVersion);
+    }
+
+    /**
+     * Get
+     *
+     * Performs a get on the base route with any additional params or headers supplied.
+     *
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface
+     *
+     * @throws GuzzleException
+     */
+    public function get($params = [], $headers = [])
+    {
+        return $this->sendGetRequest($this->baseRoute, $params, $headers);
+    }
+
+    /**
+     * SendGetRequest
+     *
+     * Low level HTTP GET interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     * @return ResponseInterface
+     *
+     * @throws GuzzleException
+     */
+    protected function sendGetRequest($uri = null, $params = [], $headers = [])
+    {
+        // Return the response
+        return $this->_request('GET', $uri, $params, $headers);
+    }
+
+    /**
+     * SendPostRequest
+     *
+     * Low level HTTP POST interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface
+     *
+     * @throws GuzzleException
+     */
+    protected function sendPostRequest($uri, $params = [], $headers = [])
+    {
+        // Return the response
+        return $this->_request('POST', $uri, $params, $headers);
+    }
+
+    /**
+     * SendPutRequest
+     *
+     * Low level HTTP PUT interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface
+     *
+     * @throws GuzzleException
+     */
+    protected function sendPutRequest($uri, $params = [], $headers = [])
+    {
+        // Return the response
+        return $this->_request('PUT', $uri, $params, $headers);
+    }
+
+    /**
+     * SendDeleteRequest
+     *
+     * Low level HTTP DELETE interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface
+     *
+     * @throws GuzzleException
+     */
+    protected function sendDeleteRequest($uri, $params = [], $headers = [])
+    {
+        // Return the response
+        return $this->_request('DELETE', $uri, $params, $headers);
+    }
+
+    /**
+     * SendHeadRequest
+     *
+     * Low level HTTP HEAD interface
+     *
+     * @param null|string $uri
+     * @param array $params
+     * @param array $headers
+     *
+     * @return ResponseInterface
+     *
+     * @throws GuzzleException
+     */
+    protected function sendHeadRequest($uri, $params = [], $headers = [])
+    {
+        // Return the response
+        return $this->_request('HEAD', $uri, $params, $headers);
     }
 
     /**
@@ -84,7 +185,9 @@ class EthosClient
      * @param null|string $uri
      * @param array $params
      * @param array $headers
+     *
      * @return ResponseInterface
+     *
      * @throws GuzzleException
      */
     private function _request($method, $uri = null, $params = [], $headers = [])
@@ -98,17 +201,17 @@ class EthosClient
             'headers' => array_merge($headers, $this->_ethos->httpClient->getConfig()['headers'])
         ];
 
-        $response = null;
-
         // Try to send the request
         try {
             // Store the response
             $response = $this->_ethos->httpClient->request($method, $uri, $options);
         } catch (ClientException $e) {
+            // Set the response
+            $response = $e->getResponse();
             // If an exception was thrown check to see if it was a 401
             if ($e->getResponse()->getStatusCode() === 401) {
                 // If it was a 401, reauthenticate
-                $this->reauthenticate();
+                $this->_ethos->reauthenticate();
                 // Try to send the request once more
                 // Throw an exception this time if things don't go well
                 $response = $this->_ethos->httpClient->request($method, $uri, $options);
@@ -124,93 +227,7 @@ class EthosClient
                 );
             }
         }
-
         // Return the response
         return $response;
-    }
-
-    /**
-     * _get
-     *
-     * Low level HTTP GET interface
-     *
-     * @param null|string $uri
-     * @param array $params
-     * @param array $headers
-     * @return ResponseInterface
-     * @throws GuzzleException
-     */
-    protected function _get($uri = null, $params = [], $headers = [])
-    {
-        // Return the response
-        return $this->_request('GET', $uri, $params, $headers);
-    }
-
-    /**
-     * _post
-     *
-     * Low level HTTP POST interface
-     *
-     * @param null|string $uri
-     * @param array $params
-     * @param array $headers
-     * @return ResponseInterface
-     * @throws GuzzleException
-     */
-    protected function _post($uri, $params = [], $headers = [])
-    {
-        // Return the response
-        return $this->_request('POST', $uri, $params, $headers);
-    }
-
-    /**
-     * _put
-     *
-     * Low level HTTP PUT interface
-     *
-     * @param null|string $uri
-     * @param array $params
-     * @param array $headers
-     * @return ResponseInterface
-     * @throws GuzzleException
-     */
-    protected function _put($uri, $params = [], $headers = [])
-    {
-        // Return the response
-        return $this->_request('PUT', $uri, $params, $headers);
-    }
-
-    /**
-     * _delete
-     *
-     * Low level HTTP DELETE interface
-     *
-     * @param null|string $uri
-     * @param array $params
-     * @param array $headers
-     * @return ResponseInterface
-     * @throws GuzzleException
-     */
-    protected function _delete($uri, $params = [], $headers = [])
-    {
-        // Return the response
-        return $this->_request('DELETE', $uri, $params, $headers);
-    }
-
-    /**
-     * _head
-     *
-     * Low level HTTP HEAD interface
-     *
-     * @param null|string $uri
-     * @param array $params
-     * @param array $headers
-     * @return ResponseInterface
-     * @throws GuzzleException
-     */
-    protected function _head($uri, $params = [], $headers = [])
-    {
-        // Return the response
-        return $this->_request('HEAD', $uri, $params, $headers);
     }
 }

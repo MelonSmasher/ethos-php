@@ -18,7 +18,6 @@ use Psr\Http\Message\ResponseInterface;
  */
 class CoursesClient extends EthosClient
 {
-
     /**
      * Base Route
      *
@@ -27,19 +26,4 @@ class CoursesClient extends EthosClient
      * @var string
      */
     protected $baseRoute = '/api/courses';
-
-    /**
-     * get
-     *
-     * Performs a get on the base route with any additional params or headers supplied.
-     *
-     * @param array $params
-     * @param array $headers
-     * @return ResponseInterface
-     * @throws GuzzleException
-     */
-    public function get($params = [], $headers = [])
-    {
-        return $this->_get($this->baseRoute, $params, $headers);
-    }
 }

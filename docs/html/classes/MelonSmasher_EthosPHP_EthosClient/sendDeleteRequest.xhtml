@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - MelonSmasher\EthosPHP\CoursesClient::get</title>
+    <title>phpDox - MelonSmasher\EthosPHP\EthosClient::sendDeleteRequest</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -39,9 +39,9 @@
             <a href="../../classes.xhtml#MelonSmasher_EthosPHP">MelonSmasher\EthosPHP</a>
           </li>
           <li class="separator">
-            <a title="MelonSmasher\EthosPHP\CoursesClient" href="../../classes/MelonSmasher_EthosPHP_CoursesClient.xhtml">CoursesClient</a>
+            <a title="MelonSmasher\EthosPHP\EthosClient" href="../../classes/MelonSmasher_EthosPHP_EthosClient.xhtml">EthosClient</a>
           </li>
-          <li class="separator">get</li>
+          <li class="separator">sendDeleteRequest</li>
         </ul>
       </div>
       <nav class="box">
@@ -62,18 +62,20 @@
             <a href="#throws">Throws</a>
           </li>
           <li>
-            <a href="../../source/CoursesClient.php.xhtml#line41">Source</a>
+            <a href="../../source/EthosClient.php.xhtml#line154">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>MelonSmasher\EthosPHP\CoursesClient::</small>get</h1>
-        <h4>get</h4>
-        <p>Performs a get on the base route with any additional params or headers supplied.</p>
+        <h1><small>MelonSmasher\EthosPHP\EthosClient::</small>sendDeleteRequest</h1>
+        <h4>SendDeleteRequest</h4>
+        <p>Low level HTTP DELETE interface</p>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function get([array
+          <code>protected function sendDeleteRequest(<a title="MelonSmasher\EthosPHP\null|string" href="../../classes/MelonSmasher_EthosPHP_null|string.xhtml">null|string</a>
+        $uri,
+            [array
         $params = ,
             [array
         $headers = ]] )
@@ -81,6 +83,10 @@
         </div>
         <h2 id="parameterlist">Parameters</h2>
         <dl class="styled">
+          <dt><code>$uri</code>
+                —
+                object</dt>
+          <dd><br/><br/><br/>      </dd>
           <dt><code>$params</code>
                 —
                 array</dt>
