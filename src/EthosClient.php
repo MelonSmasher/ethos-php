@@ -5,6 +5,7 @@ namespace MelonSmasher\EthosPHP;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -186,6 +187,7 @@ class EthosClient
      */
     public function data()
     {
+        if(empty($this->_response)) return [];
         return json_decode($this->toJson());
     }
 
@@ -198,6 +200,7 @@ class EthosClient
      */
     public function toArray()
     {
+        if(empty($this->_response)) return [];
         return json_decode($this->toJson(), true);
     }
 
@@ -210,6 +213,7 @@ class EthosClient
      */
     public function toJson()
     {
+        if(empty($this->_response)) return json_encode([]);
         return $this->_response->getBody()->getContents();
     }
 
@@ -222,6 +226,7 @@ class EthosClient
      */
     public function responseCode()
     {
+        if(empty($this->_response)) return intval(false);
         return $this->_response->getStatusCode();
     }
 
