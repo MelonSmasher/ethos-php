@@ -110,7 +110,8 @@ class EthosClient
                 // Try to send the request once more
                 // Throw an exception this time if things don't go well
                 $response = $this->ethos->httpClient->request($method, $uri, $options);
-            } else {
+            }
+            if ($e->getResponse()->getStatusCode() !== 401) {
                 // If not a 401 actually throw the exception
                 throw new ClientException(
                     $e->getMessage(),

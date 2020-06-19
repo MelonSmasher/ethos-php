@@ -143,18 +143,17 @@ final class Ethos
             ]);
             // Set the new client as the `httpClient` property
             $this->httpClient = $client;
-        } else {
-            // We have a secret so build a new HTTP client using it
-            $client = new Client([
-                'base_uri' => $this->baseURL,
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $secret,
-                    'User-Agent' => 'MelonSmasher/ethos-php/' . $this->version,
-                    //'Accept' => 'application/vnd.hedtech.integration.v' . $this->apiVersion . '+json'
-                ],
-            ]);
+            return $client;
         }
+        // We have a secret so build a new HTTP client using it
         // Return the new HTTP client
-        return $client;
+        return $client = new Client([
+            'base_uri' => $this->baseURL,
+            'headers' => [
+                'Authorization' => 'Bearer ' . $secret,
+                'User-Agent' => 'MelonSmasher/ethos-php/' . $this->version,
+                //'Accept' => 'application/vnd.hedtech.integration.v' . $this->apiVersion . '+json'
+            ],
+        ]);
     }
 }

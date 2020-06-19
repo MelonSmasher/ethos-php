@@ -146,3 +146,5 @@ fabric.properties
 .history/
 test.php
 build/
+tools/
+composer

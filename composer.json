@@ -19,7 +19,6 @@
     "guzzlehttp/guzzle": "~6.0"
   },
   "require-dev": {
-    "phpdocumentor/phpdocumentor": "2.*"
   },
   "autoload": {
     "psr-4": {
@@ -28,7 +27,10 @@
   },
   "scripts": {
     "docs": [
-      "vendor/bin/phpdoc -d src/ -t docs/ --cache-folder docCache/"
+      "tools/phploc --log-xml=build/phploc.xml src",
+      "tools/phpmd src xml  cleancode,design,unusedcode > build/pmd.xml || true",
+      "tools/phpcs --report=xml --report-file=build/phpcs.xml src/ || true",
+      "tools/phpdox"
     ]
   },
   "prefer-stable": true,

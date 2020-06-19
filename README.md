@@ -7,4 +7,18 @@ A PHP library to interact with the Ellucian Ethos API.
 
 ----
 
+## Dev Setup
 
+Install [PHIVE](https://phar.io/)
+
+Install build tools
+
+```bash
+phive install
+```
+
+Install composer requirements
+
+```bash
+./composer install
+```
