@@ -9,7 +9,7 @@
     <bootstrap/>
 
     <!-- A phpDox project to process, you can have multiple projects in one config file -->
-    <project name="phpdox" source="${basedir}/src" workdir="${basedir}/build/phpdox/xml">
+    <project name="ethos-php" source="${basedir}/src" workdir="${basedir}/build/phpdox/xml">
         <!--  @name    - The name of the project -->
         <!--  @source  - The source directory of the application to process -->
         <!--  @workdir - The directory to store the xml data files in -->
@@ -74,17 +74,17 @@
                 <!--</source> -->
 
                 <!-- add phploc output -->
-                <!--
+
                 <source type="phploc" />
-                -->
+
 
                 <!-- git vcs information -->
-                <!--
+
                 <source type="git">
                     <git binary="/usr/bin/git" />
                     <history enabled="true" limit="15" cache="${phpDox.project.workdir}/gitlog.xml" />
                 </source>
-                -->
+
 
                 <!-- PHP Code Sniffer findings -->
                 <!--
