@@ -21,13 +21,13 @@ use Psr\Http\Message\ResponseInterface;
 class EthosClient
 {
     /**
-     * Ethos Session
+     * API Version
      *
-     * The Ethos session object
+     * The version of the API to use with this request.
      *
-     * @var Ethos
+     * @var string
      */
-    private $_ethos;
+    public $apiVersion;
 
     /**
      * Base Route
@@ -37,6 +37,15 @@ class EthosClient
      * @var string
      */
     protected $baseRoute = '/api';
+
+    /**
+     * Ethos Session
+     *
+     * The Ethos session object
+     *
+     * @var Ethos
+     */
+    private $_ethos;
 
     /**
      * EthosClient constructor
@@ -194,6 +203,14 @@ class EthosClient
     {
         // Check for a uri if one is provided use it otherwise use the base route set on the class
         $uri = (empty($uri)) ? $this->baseRoute : $uri;
+
+        // Was an accept header passed in?
+        if (!array_key_exists('Accept', $headers)) {
+            // If not, check our version string.
+            // If the version string is empty send an unversioned API call.
+            // If the version string is set create the Accept header.
+            $headers['Accept'] = (empty($this->apiVersion)) ? '*/*' : 'application/vnd.hedtech.integration.v' . $this->apiVersion . '+json';
+        }
 
         // Set any query params and merge any new headers with the main header array
         $options = [

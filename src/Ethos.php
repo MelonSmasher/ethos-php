@@ -60,16 +60,6 @@ final class Ethos
      */
     private $_secret;
 
-    /*
-     * Ethos API Version.
-     *
-     * The version of the API to send a request to.
-     *
-     * @var string
-     * @todo work out how to use versioned API calls
-     */
-    //private $_apiVersion;
-
     /**
      * Ethos constructor.
      *
@@ -78,14 +68,12 @@ final class Ethos
      * @param $secret
      * @param string $baseURL
      */
-    public function __construct($secret, $baseURL)//, $apiVersion)
+    public function __construct($secret, $baseURL)
     {
         // Set the secret property
         $this->_secret = $secret;
         // Sets the base url
         $this->_baseURL = $baseURL;
-        // Sets the Ethos api version to use
-        //$this->_apiVersion = $apiVersion;
         // Requests a JWT/Session token using the secret and builds a new http client
         $this->reAuthenticate();
     }
@@ -135,12 +123,10 @@ final class Ethos
         if (empty($secret)) {
             // Build a new client using the `jwt` property
             $client = new Client([
-                //'http_errors' => false,
                 'base_uri' => $this->_baseURL,
                 'headers' => [
                     'Authorization' => 'Bearer ' . $this->_jwt,
-                    'User-Agent' => 'MelonSmasher/ethos-php/' . $this->_version,
-                    //'Accept' => 'application/vnd.hedtech.integration.v' . $this->_apiVersion . '+json'
+                    'User-Agent' => 'MelonSmasher/ethos-php/' . $this->_version
                 ],
             ]);
             // Set the new client as the `httpClient` property
@@ -155,7 +141,7 @@ final class Ethos
             'headers' => [
                 'Authorization' => 'Bearer ' . $secret,
                 'User-Agent' => 'MelonSmasher/ethos-php/' . $this->_version,
-                //'Accept' => 'application/vnd.hedtech.integration.v' . $this->_apiVersion . '+json'
+                'Accept' => '*/*'
             ],
         ]);
     }

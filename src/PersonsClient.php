@@ -3,8 +3,6 @@
 
 namespace MelonSmasher\EthosPHP;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class PersonsClient
@@ -18,6 +16,15 @@ use Psr\Http\Message\ResponseInterface;
  */
 class PersonsClient extends EthosClient
 {
+    /**
+     * API Version
+     *
+     * The version of the API to use with this request.
+     *
+     * @var string
+     */
+    public $apiVersion = '12.1.0';
+
     /**
      * Base Route
      *
