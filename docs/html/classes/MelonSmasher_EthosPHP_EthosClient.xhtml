@@ -50,6 +50,9 @@
             <a href="#synopsis">Synopsis</a>
           </li>
           <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
             <a href="#members">Members</a>
           </li>
           <li>
@@ -88,6 +91,108 @@
                     </li></ul>
 
             }<br/></div>
+        <h2 id="violations">Violations</h2>
+        <div class="styled">
+          <h3>Checkstyle</h3>
+          <table class="styled">
+            <thead>
+              <tr>
+                <th>Line</th>
+                <th>Column</th>
+                <th>Severity</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tr>
+              <td class="line">30</td>
+              <td>13</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
+              </td>
+              <td>Private member variable "ethos" must be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">51</td>
+              <td>99</td>
+              <td>
+                <span title="Generic.Files.LineLength.TooLong">warning</span>
+              </td>
+              <td>Line exceeds 85 characters; contains 99 characters</td>
+            </tr>
+            <tr>
+              <td class="line">73</td>
+              <td>13</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore">error</span>
+              </td>
+              <td>Private method name "EthosClient::reauthenticate" must be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">92</td>
+              <td>9</td>
+              <td>
+                <span title="Generic.Files.LineLength.TooLong">warning</span>
+              </td>
+              <td>Line exceeds 85 characters; contains 98 characters</td>
+            </tr>
+            <tr>
+              <td class="line">98</td>
+              <td>96</td>
+              <td>
+                <span title="Generic.Files.LineLength.TooLong">warning</span>
+              </td>
+              <td>Line exceeds 85 characters; contains 96 characters</td>
+            </tr>
+            <tr>
+              <td class="line">112</td>
+              <td>87</td>
+              <td>
+                <span title="Generic.Files.LineLength.TooLong">warning</span>
+              </td>
+              <td>Line exceeds 85 characters; contains 87 characters</td>
+            </tr>
+            <tr>
+              <td class="line">141</td>
+              <td>15</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidFunctionName.PublicUnderscore">error</span>
+              </td>
+              <td>Protected method name "EthosClient::_get" must not be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">158</td>
+              <td>15</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidFunctionName.PublicUnderscore">error</span>
+              </td>
+              <td>Protected method name "EthosClient::_post" must not be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">175</td>
+              <td>15</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidFunctionName.PublicUnderscore">error</span>
+              </td>
+              <td>Protected method name "EthosClient::_put" must not be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">192</td>
+              <td>15</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidFunctionName.PublicUnderscore">error</span>
+              </td>
+              <td>Protected method name "EthosClient::_delete" must not be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">209</td>
+              <td>15</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidFunctionName.PublicUnderscore">error</span>
+              </td>
+              <td>Protected method name "EthosClient::_head" must not be prefixed with an underscore</td>
+            </tr>
+          </table>
+        </div>
         <h2 id="members">Members</h2>
         <div class="styled members">
           <h4>private</h4>
@@ -135,6 +240,16 @@
         </div>
         <h2 id="history">History</h2>
         <ul class="styled history">
+          <li>
+            <h3>2020-06-19T14:34:00+00:00 (commit #<span title="2328d94c0b1130920145d928cc8339916bcf9578">2328d94</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">added phploc, phpmd, and phpcs as well as phive for tools</pre>
+            </div>
+          </li>
           <li>
             <h3>2020-06-19T04:17:39+00:00 (commit #<span title="3ffd7d03eb99f089b157f512dce3dcd83062ae12">3ffd7d0</span>)</h3>
             <div>

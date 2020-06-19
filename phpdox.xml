@@ -87,11 +87,11 @@
 
 
                 <!-- PHP Code Sniffer findings -->
-                <!--
+
                 <source type="phpcs">
-                    <file name="logs/phpcs.xml" />
+                    <file name="phpcs.xml" />
                 </source>
-                -->
+
 
                 <!-- PHPMessDetector -->
 

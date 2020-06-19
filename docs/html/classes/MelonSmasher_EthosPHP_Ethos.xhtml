@@ -50,6 +50,9 @@
             <a href="#synopsis">Synopsis</a>
           </li>
           <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
             <a href="#tasks">Tasks</a>
           </li>
           <li>
@@ -91,6 +94,116 @@
                     </li></ul>
 
             }<br/></div>
+        <h2 id="violations">Violations</h2>
+        <div class="styled">
+          <h3>Checkstyle</h3>
+          <table class="styled">
+            <thead>
+              <tr>
+                <th>Line</th>
+                <th>Column</th>
+                <th>Severity</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tr>
+              <td class="line">35</td>
+              <td>13</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
+              </td>
+              <td>Private member variable "version" must be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">44</td>
+              <td>13</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
+              </td>
+              <td>Private member variable "jwt" must be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">62</td>
+              <td>13</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
+              </td>
+              <td>Private member variable "baseURL" must be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">71</td>
+              <td>13</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
+              </td>
+              <td>Private member variable "secret" must be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">111</td>
+              <td>13</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore">error</span>
+              </td>
+              <td>Private method name "Ethos::authenticate" must be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">130</td>
+              <td>13</td>
+              <td>
+                <span title="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore">error</span>
+              </td>
+              <td>Private method name "Ethos::buildClient" must be prefixed with an underscore</td>
+            </tr>
+            <tr>
+              <td class="line">135</td>
+              <td>27</td>
+              <td>
+                <span title="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket">error</span>
+              </td>
+              <td>Opening parenthesis of a multi-line function call must be the last content on the line</td>
+            </tr>
+            <tr>
+              <td class="line">141</td>
+              <td>21</td>
+              <td>
+                <span title="Generic.Files.LineLength.TooLong">warning</span>
+              </td>
+              <td>Line exceeds 85 characters; contains 103 characters</td>
+            </tr>
+            <tr>
+              <td class="line">143</td>
+              <td>14</td>
+              <td>
+                <span title="PEAR.Functions.FunctionCallSignature.CloseBracketLine">error</span>
+              </td>
+              <td>Closing parenthesis of a multi-line function call must be on a line by itself</td>
+            </tr>
+            <tr>
+              <td class="line">150</td>
+              <td>30</td>
+              <td>
+                <span title="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket">error</span>
+              </td>
+              <td>Opening parenthesis of a multi-line function call must be the last content on the line</td>
+            </tr>
+            <tr>
+              <td class="line">155</td>
+              <td>17</td>
+              <td>
+                <span title="Generic.Files.LineLength.TooLong">warning</span>
+              </td>
+              <td>Line exceeds 85 characters; contains 99 characters</td>
+            </tr>
+            <tr>
+              <td class="line">157</td>
+              <td>10</td>
+              <td>
+                <span title="PEAR.Functions.FunctionCallSignature.CloseBracketLine">error</span>
+              </td>
+              <td>Closing parenthesis of a multi-line function call must be on a line by itself</td>
+            </tr>
+          </table>
+        </div>
         <h2 id="tasks">Tasks</h2>
         <table class="styled">
           <thead>
@@ -147,6 +260,16 @@
         </div>
         <h2 id="history">History</h2>
         <ul class="styled history">
+          <li>
+            <h3>2020-06-19T14:34:00+00:00 (commit #<span title="2328d94c0b1130920145d928cc8339916bcf9578">2328d94</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">added phploc, phpmd, and phpcs as well as phive for tools</pre>
+            </div>
+          </li>
           <li>
             <h3>2020-06-19T04:17:39+00:00 (commit #<span title="3ffd7d03eb99f089b157f512dce3dcd83062ae12">3ffd7d0</span>)</h3>
             <div>
