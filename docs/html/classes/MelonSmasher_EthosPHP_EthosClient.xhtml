@@ -93,9 +93,15 @@
                         true;
                     </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canDeleteBanner</a> =
                         true;
+                    </li><li>private <span title="Psr\Http\Message\ResponseInterface">ResponseInterface</span> <a href="#members">$_response</a>;
                     </li><li>private <span title="MelonSmasher\EthosPHP\Ethos">Ethos</span> <a href="#members">$_ethos</a>;
                     </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/__construct.xhtml">__construct</a>()
                     </li><li>public static Ethos <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/createSession.xhtml">createSession</a>()
+                    </li><li>public ResponseInterface <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/response.xhtml">response</a>()
+                    </li><li>public array <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/data.xhtml">data</a>()
+                    </li><li>public array <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/toArray.xhtml">toArray</a>()
+                    </li><li>public string <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/toJson.xhtml">toJson</a>()
+                    </li><li>public int <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/responseCode.xhtml">responseCode</a>()
                     </li><li>public string <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/apiVersion.xhtml">apiVersion</a>()
                     </li><li>public bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformCreate.xhtml">canPerformCreate</a>()
                     </li><li>public bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformRead.xhtml">canPerformRead</a>()
@@ -122,6 +128,9 @@
             <li id="_ethos"><strong>$_ethos</strong>
                 —
                 <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos.xhtml">MelonSmasher\EthosPHP\Ethos</a><br/><span class="indent">Ethos Session</span></li>
+            <li id="_response"><strong>$_response</strong>
+                —
+                <a title="Psr\Http\Message\ResponseInterface" href="../classes/Psr_Http_Message_ResponseInterface.xhtml">Psr\Http\Message\ResponseInterface</a><br/><span class="indent">Response</span></li>
           </ul>
           <h4>protected</h4>
           <ul class="members">
@@ -201,18 +210,68 @@
                 — Create</li>
             <li id="createSession"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/createSession.xhtml">createSession()</a>
                 — CreateSession</li>
+            <li id="data"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/data.xhtml">data()</a>
+                — Data</li>
             <li id="delete"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/delete.xhtml">delete()</a>
                 — Delete</li>
             <li id="read"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/read.xhtml">read()</a>
                 — Read</li>
             <li id="readHead"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/readHead.xhtml">readHead()</a>
                 — Read Head</li>
+            <li id="response"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/response.xhtml">response()</a>
+                — Response</li>
+            <li id="responseCode"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/responseCode.xhtml">responseCode()</a>
+                — Response Code</li>
+            <li id="toArray"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/toArray.xhtml">toArray()</a>
+                — To Array</li>
+            <li id="toJson"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/toJson.xhtml">toJson()</a>
+                — To JSON</li>
             <li id="update"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/update.xhtml">update()</a>
                 — Update</li>
           </ul>
         </div>
         <h2 id="history">History</h2>
         <ul class="styled history">
+          <li>
+            <h3>2020-06-19T23:04:49+00:00 (commit #<span title="b9747fe6b7e210c13bda23c291addf8e3c5ad833">b9747fe</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">clients now know which CRUD operations are avilable per ERP backend.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T19:56:20+00:00 (commit #<span title="8ea1eead9cac8f5ca626f108772f94a78866d027">8ea1eea</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">implimented get for all available data-model classes for banner and colleague. All data-models are versioned for the latest version of colleague and banner.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T17:15:02+00:00 (commit #<span title="2367c17d82db59c413de937d6cf30a2eeda7f738">2367c17</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">added support for versioned API calls at the datamodel level.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T16:55:35+00:00 (commit #<span title="ee1e5d545de63311b476eae8fa947ad19469df23">ee1e5d5</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">simplified data classes by moving base get reuqest to the EthosClient</pre>
+            </div>
+          </li>
           <li>
             <h3>2020-06-19T15:59:05+00:00 (commit #<span title="f8ca0ce861b416d5d90f8527e630d4b3f291acab">f8ca0ce</span>)</h3>
             <div>

@@ -82,7 +82,7 @@
 
                 <source type="git">
                     <git binary="/usr/local/bin/git" />
-                    <history enabled="true" limit="15" cache="${phpDox.project.workdir}/gitlog.xml" />
+                    <history enabled="true" limit="10" cache="${phpDox.project.workdir}/gitlog.xml" />
                 </source>
 
 

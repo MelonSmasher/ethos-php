@@ -120,6 +120,15 @@ class EthosClient
     protected $canDeleteBanner = true;
 
     /**
+     * Response
+     *
+     * The most recent response.
+     *
+     * @var ResponseInterface
+     */
+    private $_response;
+
+    /**
      * Ethos Session
      *
      * The Ethos session object.
@@ -154,6 +163,66 @@ class EthosClient
     public static function createSession($secret, $baseURL = 'https://integrate.elluciancloud.com', $erpBackend = ErpBackend::COLLEAGUE)
     {
         return new Ethos($secret, $baseURL, $erpBackend);
+    }
+
+    /**
+     * Response
+     *
+     * Returns the response
+     *
+     * @return ResponseInterface
+     */
+    public function response()
+    {
+        return $this->_response;
+    }
+
+    /**
+     * Data
+     *
+     * Returns a decoded representation of the response.
+     *
+     * @return array
+     */
+    public function data()
+    {
+        return json_decode($this->toJson());
+    }
+
+    /**
+     * To Array
+     *
+     * Returns an associative array representation of the response.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return json_decode($this->toJson(), true);
+    }
+
+    /**
+     * To JSON
+     *
+     * Returns a JSON string of the response.
+     *
+     * @return string
+     */
+    public function toJson()
+    {
+        return $this->_response->getBody()->getContents();
+    }
+
+    /**
+     * Response Code
+     *
+     * Returns the request response code.
+     *
+     * @return int
+     */
+    public function responseCode()
+    {
+        return $this->_response->getStatusCode();
     }
 
     /**
@@ -498,6 +567,9 @@ class EthosClient
                 );
             }
         }
+
+        // Set the response
+        $this->_response = $response;
         // Return the response
         return $response;
     }
