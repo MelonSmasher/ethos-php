@@ -5,7 +5,7 @@ namespace MelonSmasher\EthosPHP;
 use GuzzleHttp\Client;
 
 /**
- * Class Ethos.
+ * Class Ethos
  *
  * Base class used to build the Ethos session.
  *
@@ -23,6 +23,15 @@ final class Ethos
      * @var Client
      */
     public $httpClient;
+
+    /**
+     * ERP Backend.
+     *
+     * The ERP backing Ethos.
+     *
+     * @var ErpBackend
+     */
+    public $erpBackend;
 
     /**
      * Ethos-php version.
@@ -67,13 +76,16 @@ final class Ethos
      *
      * @param $secret
      * @param string $baseURL
+     * @param ErpBackend $erpBackend
      */
-    public function __construct($secret, $baseURL)
+    public function __construct($secret, $baseURL, $erpBackend)
     {
         // Set the secret property
         $this->_secret = $secret;
         // Sets the base url
         $this->_baseURL = $baseURL;
+        // Set the ERP backend
+        $this->erpBackend = $erpBackend;
         // Requests a JWT/Session token using the secret and builds a new http client
         $this->reAuthenticate();
     }

@@ -149,3 +149,5 @@ build/
 tools/
 composer
 .php_cs.cache
+ethosClasses.json
+genClasses.py

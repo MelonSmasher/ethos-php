@@ -16,13 +16,20 @@
   },
   "require": {
     "php": ">=7.2.0",
-    "guzzlehttp/guzzle": "~6.0"
+    "guzzlehttp/guzzle": "~6.0",
+    "myclabs/php-enum": "^1.7"
   },
   "require-dev": {
   },
   "autoload": {
     "psr-4": {
-      "MelonSmasher\\EthosPHP\\": "src/"
+      "MelonSmasher\\EthosPHP\\": "src/",
+      "MelonSmasher\\EthosPHP\\Finance\\": "src/Finance/",
+      "MelonSmasher\\EthosPHP\\FinancialAid\\": "src/FinancialAid/",
+      "MelonSmasher\\EthosPHP\\Foundation\\": "src/Foundation/",
+      "MelonSmasher\\EthosPHP\\HumanResources\\": "src/HumanResources/",
+      "MelonSmasher\\EthosPHP\\Recruitment\\": "src/Recruitment/",
+      "MelonSmasher\\EthosPHP\\Student\\": "src/Student/"
     }
   },
   "scripts": {

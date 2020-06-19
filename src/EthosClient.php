@@ -21,13 +21,22 @@ use Psr\Http\Message\ResponseInterface;
 class EthosClient
 {
     /**
-     * API Version
+     * API Version Banner
+     *
+     * The version of the API to use with this request.
+     *
+     * @var string|boolean
+     */
+    public $bannerApiVersion;
+
+    /**
+     * API Version for Colleague
      *
      * The version of the API to use with this request.
      *
      * @var string
      */
-    public $apiVersion;
+    public $colleagueApiVersion;
 
     /**
      * Base Route
@@ -66,12 +75,13 @@ class EthosClient
      *
      * @param $secret
      * @param string $baseURL
+     * @param string $erpBackend
      *
      * @return Ethos
      */
-    public static function createSession($secret, $baseURL = 'https://integrate.elluciancloud.com')
+    public static function createSession($secret, $baseURL = 'https://integrate.elluciancloud.com', $erpBackend = ErpBackend::COLLEAGUE)
     {
-        return new Ethos($secret, $baseURL);//, $apiVersion);
+        return new Ethos($secret, $baseURL, $erpBackend);
     }
 
     /**
@@ -89,6 +99,19 @@ class EthosClient
     public function get($params = [], $headers = [])
     {
         return $this->sendGetRequest($this->baseRoute, $params, $headers);
+    }
+
+    /**
+     * API Version
+     *
+     * Uses the selected API backend to determine the API version.
+     *
+     * @return string
+     */
+    public function apiVersion()
+    {
+        if ($this->_ethos->erpBackend === ErpBackend::COLLEAGUE) return $this->colleagueApiVersion;
+        if ($this->_ethos->erpBackend === ErpBackend::BANNER) return $this->bannerApiVersion;
     }
 
     /**
@@ -209,7 +232,12 @@ class EthosClient
             // If not, check our version string.
             // If the version string is empty send an unversioned API call.
             // If the version string is set create the Accept header.
-            $headers['Accept'] = (empty($this->apiVersion)) ? '*/*' : 'application/vnd.hedtech.integration.v' . $this->apiVersion . '+json';
+            $headers['Accept'] = (empty($this->apiVersion())) ? '*/*' : 'application/vnd.hedtech.integration.v' . $this->apiVersion() . '+json';
+            // If there is no API version available for the selected backend throw a warning
+            if ($this->apiVersion() === false) {
+                trigger_error('No data model version available for selected ERP backend '
+                    . $this->_ethos->erpBackend, E_USER_WARNING);
+            }
         }
 
         // Set any query params and merge any new headers with the main header array
