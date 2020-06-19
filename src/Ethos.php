@@ -5,11 +5,10 @@ namespace MelonSmasher\EthosPHP;
 use GuzzleHttp\Client;
 
 /**
- * Class Ethos
+ * Class Ethos.
  *
  * Base class used to build the Ethos session.
  *
- * @package MelonSmasher
  * @license MIT
  * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
  * @author Alex Markessinis
@@ -17,7 +16,7 @@ use GuzzleHttp\Client;
 final class Ethos
 {
     /**
-     * HTTP Client
+     * HTTP Client.
      *
      * The HTTP client used to communicate with Ethos.
      *
@@ -26,49 +25,49 @@ final class Ethos
     public $httpClient;
 
     /**
-     * ethos-php version
+     * ethos-php version.
      *
      * This string defines the client version
      *
      * @var string
      */
-    private $version = '0.0.1';
+    private $_version = '0.0.1';
 
     /**
-     * JSON Web Token
+     * JSON Web Token.
      *
      * The current JWT for the authenticated session.
      *
-     * @var null|string
+     * @var string|null
      */
-    private $jwt = null;
+    private $_jwt = null;
 
     /**
-     * Ethos API Version
+     * Ethos API Version.
      *
      * The version of the API to send a request to.
      *
      * @var string
      */
-    //private $apiVersion;
+    //private $_apiVersion;
 
     /**
-     * Base API URL
+     * Base API URL.
      *
      * The base API url used to communicate with Ethos.
      *
      * @var string
      */
-    private $baseURL;
+    private $_baseURL;
 
     /**
-     * API key / secret / refresh token
+     * API key / secret / refresh token.
      *
      * The API key used to authenticate with the API. Used to obtain a JWT / session token.
      *
-     * @var null|string
+     * @var string|null
      */
-    private $secret = null;
+    private $_secret;
 
     /**
      * Ethos constructor.
@@ -78,81 +77,84 @@ final class Ethos
      * @param $secret
      * @param string $baseURL
      */
-    function __construct($secret, $baseURL)//, $apiVersion)
+    public function __construct($secret, $baseURL)//, $apiVersion)
     {
         // Set the secret property
-        $this->secret = $secret;
+        $this->_secret = $secret;
         // Sets the base url
-        $this->baseURL = $baseURL;
+        $this->_baseURL = $baseURL;
         // Sets the Ethos api version to use
-        //$this->apiVersion = $apiVersion;
+        //$this->_apiVersion = $apiVersion;
         // Requests a JWT/Session token using the secret and builds a new http client
         $this->reAuthenticate();
     }
 
     /**
-     * Re-Authenticate
+     * Re-Authenticate.
      *
      * Builds a new authenticated session and sets a new `httpClient`.
      */
     public function reauthenticate()
     {
         // Authenticate with the Ethos API using the API key / secret / refresh token
-        $this->authenticate();
+        $this->_authenticate();
         // Build an HTTP client that uses the JWT / session token
-        $this->buildClient();
+        $this->_buildClient();
     }
 
     /**
-     * Authenticate with Ethos
+     * Authenticate with Ethos.
      *
      * Authenticates with Ethos and sets the `jwt` class property.
      */
-    private function authenticate()
+    private function _authenticate()
     {
         // Build a temporary HTTP client using the API key / secret / refresh token
-        $httpAuthClient = $this->buildClient($this->secret);
+        $httpAuthClient = $this->_buildClient($this->_secret);
         // Send the request and store the JWT
-        $this->jwt = $httpAuthClient->post('/auth')->getBody()->getContents();
+        $this->_jwt = $httpAuthClient->post('/auth')->getBody()->getContents();
         // @todo Auth Error Handling
     }
 
     /**
-     * Build HTTP client
+     * Build HTTP client.
      *
      * Builds and returns an HTTP client.
      * If a secret is supplied only the HTTP client is returned.
-     * If no secret is supplied the `jwt` class property is used and the `httpClient` property is set in addition to returning the client.
+     * If no secret is supplied the `jwt` class property is used.
+     * The `httpClient` property is set in addition to returning the client.
      *
-     * @param null|string $secret
+     * @param string|null $secret
+     *
      * @return Client
      */
-    private function buildClient($secret = null)
+    private function _buildClient($secret = null)
     {
         // If no secret was supplied
         if (empty($secret)) {
             // Build a new client using the `jwt` property
             $client = new Client([
                 //'http_errors' => false,
-                'base_uri' => $this->baseURL,
+                'base_uri' => $this->_baseURL,
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $this->jwt,
-                    'User-Agent' => 'MelonSmasher/ethos-php/' . $this->version,
-                    //'Accept' => 'application/vnd.hedtech.integration.v' . $this->apiVersion . '+json'
+                    'Authorization' => 'Bearer '.$this->_jwt,
+                    'User-Agent' => 'MelonSmasher/ethos-php/'.$this->_version,
+                    //'Accept' => 'application/vnd.hedtech.integration.v' . $this->_apiVersion . '+json'
                 ],
             ]);
             // Set the new client as the `httpClient` property
             $this->httpClient = $client;
+
             return $client;
         }
         // We have a secret so build a new HTTP client using it
         // Return the new HTTP client
         return $client = new Client([
-            'base_uri' => $this->baseURL,
+            'base_uri' => $this->_baseURL,
             'headers' => [
-                'Authorization' => 'Bearer ' . $secret,
-                'User-Agent' => 'MelonSmasher/ethos-php/' . $this->version,
-                //'Accept' => 'application/vnd.hedtech.integration.v' . $this->apiVersion . '+json'
+                'Authorization' => 'Bearer '.$secret,
+                'User-Agent' => 'MelonSmasher/ethos-php/'.$this->_version,
+                //'Accept' => 'application/vnd.hedtech.integration.v' . $this->_apiVersion . '+json'
             ],
         ]);
     }

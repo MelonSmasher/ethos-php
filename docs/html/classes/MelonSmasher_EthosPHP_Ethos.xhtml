@@ -65,13 +65,13 @@
             <a href="#history">History</a>
           </li>
           <li>
-            <a href="../source/Ethos.php.xhtml#line17">Source</a>
+            <a href="../source/Ethos.php.xhtml#line16">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1 id="introduction"><small>MelonSmasher\EthosPHP\</small>Ethos</h1>
-        <h4>Class Ethos</h4>
+        <h4>Class Ethos.</h4>
         <p>Base class used to build the Ethos session.</p>
         <ul>
           <li>Author: Alex Markessinis</li>
@@ -80,17 +80,16 @@
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class Ethos
             {<br/><ul class="none"><li>// members</li><li>public <span title="GuzzleHttp\Client">Client</span> <a href="#members">$httpClient</a>;
-                    </li><li>private string <a href="#members">$version</a> =
+                    </li><li>private string <a href="#members">$_version</a> =
                         '0.0.1';
-                    </li><li>private <span title="MelonSmasher\EthosPHP\null|string">null|string</span> <a href="#members">$jwt</a> =
+                    </li><li>private <span title="MelonSmasher\EthosPHP\string|null">string|null</span> <a href="#members">$_jwt</a> =
                         NULL;
-                    </li><li>private  <a href="#members">$baseURL</a>;
-                    </li><li>private <span title="MelonSmasher\EthosPHP\null|string">null|string</span> <a href="#members">$secret</a> =
-                        NULL;
+                    </li><li>private  <a href="#members">$_baseURL</a>;
+                    </li><li>private <span title="MelonSmasher\EthosPHP\string|null">string|null</span> <a href="#members">$_secret</a>;
                     </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/__construct.xhtml">__construct</a>()
                     </li><li>public void <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/reauthenticate.xhtml">reauthenticate</a>()
-                    </li><li>private void <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/authenticate.xhtml">authenticate</a>()
-                    </li><li>private Client <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/buildClient.xhtml">buildClient</a>()
+                    </li><li>private void <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/_authenticate.xhtml">_authenticate</a>()
+                    </li><li>private Client <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/_buildClient.xhtml">_buildClient</a>()
                     </li></ul>
 
             }<br/></div>
@@ -107,55 +106,7 @@
               </tr>
             </thead>
             <tr>
-              <td class="line">35</td>
-              <td>13</td>
-              <td>
-                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
-              </td>
-              <td>Private member variable "version" must be prefixed with an underscore</td>
-            </tr>
-            <tr>
-              <td class="line">44</td>
-              <td>13</td>
-              <td>
-                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
-              </td>
-              <td>Private member variable "jwt" must be prefixed with an underscore</td>
-            </tr>
-            <tr>
-              <td class="line">62</td>
-              <td>13</td>
-              <td>
-                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
-              </td>
-              <td>Private member variable "baseURL" must be prefixed with an underscore</td>
-            </tr>
-            <tr>
-              <td class="line">71</td>
-              <td>13</td>
-              <td>
-                <span title="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">error</span>
-              </td>
-              <td>Private member variable "secret" must be prefixed with an underscore</td>
-            </tr>
-            <tr>
-              <td class="line">111</td>
-              <td>13</td>
-              <td>
-                <span title="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore">error</span>
-              </td>
-              <td>Private method name "Ethos::authenticate" must be prefixed with an underscore</td>
-            </tr>
-            <tr>
-              <td class="line">130</td>
-              <td>13</td>
-              <td>
-                <span title="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore">error</span>
-              </td>
-              <td>Private method name "Ethos::buildClient" must be prefixed with an underscore</td>
-            </tr>
-            <tr>
-              <td class="line">135</td>
+              <td class="line">136</td>
               <td>27</td>
               <td>
                 <span title="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket">error</span>
@@ -163,15 +114,15 @@
               <td>Opening parenthesis of a multi-line function call must be the last content on the line</td>
             </tr>
             <tr>
-              <td class="line">141</td>
+              <td class="line">142</td>
               <td>21</td>
               <td>
                 <span title="Generic.Files.LineLength.TooLong">warning</span>
               </td>
-              <td>Line exceeds 85 characters; contains 103 characters</td>
+              <td>Line exceeds 85 characters; contains 104 characters</td>
             </tr>
             <tr>
-              <td class="line">143</td>
+              <td class="line">144</td>
               <td>14</td>
               <td>
                 <span title="PEAR.Functions.FunctionCallSignature.CloseBracketLine">error</span>
@@ -179,7 +130,7 @@
               <td>Closing parenthesis of a multi-line function call must be on a line by itself</td>
             </tr>
             <tr>
-              <td class="line">150</td>
+              <td class="line">152</td>
               <td>30</td>
               <td>
                 <span title="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket">error</span>
@@ -187,15 +138,15 @@
               <td>Opening parenthesis of a multi-line function call must be the last content on the line</td>
             </tr>
             <tr>
-              <td class="line">155</td>
+              <td class="line">157</td>
               <td>17</td>
               <td>
                 <span title="Generic.Files.LineLength.TooLong">warning</span>
               </td>
-              <td>Line exceeds 85 characters; contains 99 characters</td>
+              <td>Line exceeds 85 characters; contains 100 characters</td>
             </tr>
             <tr>
-              <td class="line">157</td>
+              <td class="line">159</td>
               <td>10</td>
               <td>
                 <span title="PEAR.Functions.FunctionCallSignature.CloseBracketLine">error</span>
@@ -213,7 +164,7 @@
             </tr>
           </thead>
           <tr>
-            <td class="nummeric">117</td>
+            <td class="nummeric">116</td>
             <td>Auth Error Handling</td>
           </tr>
         </table>
@@ -221,41 +172,41 @@
         <div class="styled members">
           <h4>private</h4>
           <ul class="members">
-            <li id="baseURL"><strong>$baseURL</strong>
+            <li id="_baseURL"><strong>$_baseURL</strong>
                 —
-                string<br/><span class="indent">Base API URL</span></li>
-            <li id="jwt"><strong>$jwt</strong>
+                string<br/><span class="indent">Base API URL.</span></li>
+            <li id="_jwt"><strong>$_jwt</strong>
                 —
-                <a title="MelonSmasher\EthosPHP\null|string" href="../classes/MelonSmasher_EthosPHP_null|string.xhtml">MelonSmasher\EthosPHP\null|string</a><br/><span class="indent">JSON Web Token</span></li>
-            <li id="secret"><strong>$secret</strong>
+                <a title="MelonSmasher\EthosPHP\string|null" href="../classes/MelonSmasher_EthosPHP_string|null.xhtml">MelonSmasher\EthosPHP\string|null</a><br/><span class="indent">JSON Web Token.</span></li>
+            <li id="_secret"><strong>$_secret</strong>
                 —
-                <a title="MelonSmasher\EthosPHP\null|string" href="../classes/MelonSmasher_EthosPHP_null|string.xhtml">MelonSmasher\EthosPHP\null|string</a><br/><span class="indent">API key / secret / refresh token</span></li>
-            <li id="version"><strong>$version</strong>
+                <a title="MelonSmasher\EthosPHP\string|null" href="../classes/MelonSmasher_EthosPHP_string|null.xhtml">MelonSmasher\EthosPHP\string|null</a><br/><span class="indent">API key / secret / refresh token.</span></li>
+            <li id="_version"><strong>$_version</strong>
                 —
-                string<br/><span class="indent">ethos-php version</span></li>
+                string<br/><span class="indent">ethos-php version.</span></li>
           </ul>
           <h4>public</h4>
           <ul class="members">
             <li id="httpClient"><strong>$httpClient</strong>
                 —
-                <a title="GuzzleHttp\Client" href="../classes/GuzzleHttp_Client.xhtml">GuzzleHttp\Client</a><br/><span class="indent">HTTP Client</span></li>
+                <a title="GuzzleHttp\Client" href="../classes/GuzzleHttp_Client.xhtml">GuzzleHttp\Client</a><br/><span class="indent">HTTP Client.</span></li>
           </ul>
         </div>
         <h2 id="methods">Methods</h2>
         <div class="styled">
           <h4>private</h4>
           <ul>
-            <li id="authenticate"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/authenticate.xhtml">authenticate()</a>
-                — Authenticate with Ethos</li>
-            <li id="buildClient"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/buildClient.xhtml">buildClient()</a>
-                — Build HTTP client</li>
+            <li id="_authenticate"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/_authenticate.xhtml">_authenticate()</a>
+                — Authenticate with Ethos.</li>
+            <li id="_buildClient"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/_buildClient.xhtml">_buildClient()</a>
+                — Build HTTP client.</li>
           </ul>
           <h4>public</h4>
           <ul>
             <li id="__construct"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/__construct.xhtml">__construct()</a>
                 — Ethos constructor.</li>
             <li id="reauthenticate"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/reauthenticate.xhtml">reauthenticate()</a>
-                — Re-Authenticate</li>
+                — Re-Authenticate.</li>
           </ul>
         </div>
         <h2 id="history">History</h2>

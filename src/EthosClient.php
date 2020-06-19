@@ -4,8 +4,8 @@
 namespace MelonSmasher\EthosPHP;
 
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
-
 
 /**
  * Class EthosClient
@@ -27,7 +27,7 @@ class EthosClient
      *
      * @var Ethos
      */
-    private $ethos;
+    private $_ethos;
 
     /**
      * Base Route
@@ -62,7 +62,7 @@ class EthosClient
      */
     public function __construct(Ethos $ethos)
     {
-        $this->ethos = $ethos;
+        $this->_ethos = $ethos;
     }
 
     /**
@@ -72,7 +72,7 @@ class EthosClient
      */
     private function reauthenticate()
     {
-        $this->ethos->reauthenticate();
+        $this->_ethos->reauthenticate();
     }
 
     /**
@@ -85,7 +85,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     private function _request($method, $uri = null, $params = [], $headers = [])
     {
@@ -95,13 +95,15 @@ class EthosClient
         // Set any query params and merge any new headers with the main header array
         $options = [
             'query' => $params,
-            'headers' => array_merge($headers, $this->ethos->httpClient->getConfig()['headers'])
+            'headers' => array_merge($headers, $this->_ethos->httpClient->getConfig()['headers'])
         ];
+
+        $response = null;
 
         // Try to send the request
         try {
             // Store the response
-            $response = $this->ethos->httpClient->request($method, $uri, $options);
+            $response = $this->_ethos->httpClient->request($method, $uri, $options);
         } catch (ClientException $e) {
             // If an exception was thrown check to see if it was a 401
             if ($e->getResponse()->getStatusCode() === 401) {
@@ -109,7 +111,7 @@ class EthosClient
                 $this->reauthenticate();
                 // Try to send the request once more
                 // Throw an exception this time if things don't go well
-                $response = $this->ethos->httpClient->request($method, $uri, $options);
+                $response = $this->_ethos->httpClient->request($method, $uri, $options);
             }
             if ($e->getResponse()->getStatusCode() !== 401) {
                 // If not a 401 actually throw the exception
@@ -136,7 +138,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     protected function _get($uri = null, $params = [], $headers = [])
     {
@@ -153,7 +155,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     protected function _post($uri, $params = [], $headers = [])
     {
@@ -170,7 +172,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     protected function _put($uri, $params = [], $headers = [])
     {
@@ -187,7 +189,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     protected function _delete($uri, $params = [], $headers = [])
     {
@@ -204,7 +206,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      * @return ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     protected function _head($uri, $params = [], $headers = [])
     {

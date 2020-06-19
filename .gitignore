@@ -148,3 +148,4 @@ test.php
 build/
 tools/
 composer
+.php_cs.cache

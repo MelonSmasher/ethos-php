@@ -3,6 +3,8 @@
 
 namespace MelonSmasher\EthosPHP;
 
+use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class PersonsClient
@@ -33,12 +35,11 @@ class PersonsClient extends EthosClient
      *
      * @param array $params
      * @param array $headers
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return ResponseInterface
+     * @throws GuzzleException
      */
     public function get($params = [], $headers = [])
     {
         return $this->_get($this->baseRoute, $params, $headers);
     }
-
 }
