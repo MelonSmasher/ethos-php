@@ -2,6 +2,7 @@
 
 A PHP library to interact with the Ellucian Ethos API.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d8bcd9231c4e4fb881c95dc8c15e7221)](https://app.codacy.com/manual/MelonSmasher/ethos-php?utm_source=github.com&utm_medium=referral&utm_content=MelonSmasher/ethos-php&utm_campaign=Badge_Grade_Dashboard)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/MelonSmasher/ethos-php.svg)](https://github.com/MelonSmasher/ethos-php/issues)
 
