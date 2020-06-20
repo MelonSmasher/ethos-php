@@ -5,7 +5,6 @@ namespace MelonSmasher\EthosPHP;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -121,6 +120,24 @@ class EthosClient
     protected $canDeleteBanner = true;
 
     /**
+     * Per Page Limit
+     *
+     * The max amount of objects returned per page.
+     *
+     * @var int
+     */
+    protected $perPageLimit = 10;
+
+    /**
+     * Page
+     *
+     * The page of results to request.
+     *
+     * @var int
+     */
+    protected $page = 1;
+
+    /**
      * Response
      *
      * The most recent response.
@@ -167,6 +184,44 @@ class EthosClient
     }
 
     /**
+     * Next Page
+     *
+     * Moves the page counter forward by the increment supplied. Default increment is 1.
+     *
+     * @param int $inc
+     */
+    public function nextPage($inc = 1)
+    {
+        $this->page += $inc;
+    }
+
+    /**
+     * Back Page
+     *
+     * Moves the page counter back by the increment supplied. Default increment is 1.
+     *
+     * @param int $inc
+     */
+    public function backPage($inc = 1)
+    {
+        $this->page -= $inc;
+        if ($this->page < 1) $this->page = 1;
+    }
+
+    /**
+     * Set Page
+     *
+     * Sets the current page to the supplied number. The first page is 1.
+     *
+     * @param $number
+     */
+    public function setPage($number = 1)
+    {
+        $this->page = $number;
+        if ($this->page < 1) $this->page = 1;
+    }
+
+    /**
      * Response
      *
      * Returns the response
@@ -187,7 +242,7 @@ class EthosClient
      */
     public function data()
     {
-        if(empty($this->_response)) return [];
+        if (empty($this->_response)) return [];
         return json_decode($this->toJson());
     }
 
@@ -200,7 +255,7 @@ class EthosClient
      */
     public function toArray()
     {
-        if(empty($this->_response)) return [];
+        if (empty($this->_response)) return [];
         return json_decode($this->toJson(), true);
     }
 
@@ -213,7 +268,7 @@ class EthosClient
      */
     public function toJson()
     {
-        if(empty($this->_response)) return json_encode([]);
+        if (empty($this->_response)) return json_encode([]);
         return $this->_response->getBody()->getContents();
     }
 
@@ -226,7 +281,7 @@ class EthosClient
      */
     public function responseCode()
     {
-        if(empty($this->_response)) return intval(false);
+        if (empty($this->_response)) return intval(false);
         return $this->_response->getStatusCode();
     }
 
@@ -304,7 +359,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface|bool
+     * @return EthosClient|bool
      *
      * @throws GuzzleException
      */
@@ -326,7 +381,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface|bool
+     * @return EthosClient|bool
      *
      * @throws GuzzleException
      */
@@ -348,7 +403,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface|bool
+     * @return EthosClient|bool
      *
      * @throws GuzzleException
      */
@@ -371,7 +426,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface|bool
+     * @return EthosClient|bool
      *
      * @throws GuzzleException
      */
@@ -393,7 +448,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface|bool
+     * @return EthosClient|bool
      *
      * @throws GuzzleException
      */
@@ -415,7 +470,7 @@ class EthosClient
      * @param null|string $uri
      * @param array $params
      * @param array $headers
-     * @return ResponseInterface
+     * @return EthosClient
      *
      * @throws GuzzleException
      */
@@ -435,7 +490,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface
+     * @return EthosClient
      *
      * @throws GuzzleException
      */
@@ -455,7 +510,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface
+     * @return EthosClient
      *
      * @throws GuzzleException
      */
@@ -474,7 +529,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface
+     * @return EthosClient
      *
      * @throws GuzzleException
      */
@@ -493,7 +548,7 @@ class EthosClient
      * @param array $params
      * @param array $headers
      *
-     * @return ResponseInterface
+     * @return EthosClient
      *
      * @throws GuzzleException
      */
@@ -501,6 +556,19 @@ class EthosClient
     {
         // Return the response
         return $this->_request('HEAD', $uri, $params, $headers);
+    }
+
+    /**
+     * Offset
+     *
+     * This dynamically determines the page offset based on the page number.
+     *
+     * @return int
+     */
+    private function _offset()
+    {
+        if ($this->page <= 1) return 0;
+        return intval($this->page * $this->perPageLimit);
     }
 
     /**
@@ -514,7 +582,7 @@ class EthosClient
      * @param array $headers
      * @param null|string $data
      *
-     * @return ResponseInterface
+     * @return EthosClient
      *
      * @throws GuzzleException
      */
@@ -536,6 +604,11 @@ class EthosClient
                     . $this->_ethos->erpBackend, E_USER_WARNING);
             }
         }
+
+        // Set the page offset
+        $params['offset'] = $this->_offset();
+        // Set the result limit
+        $params['limit'] = $this->perPageLimit;
 
         // Set any query params and merge any new headers with the main header array
         $options = [
@@ -575,7 +648,7 @@ class EthosClient
 
         // Set the response
         $this->_response = $response;
-        // Return the response
-        return $response;
+
+        return  $this;
     }
 }
