@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MelonSmasher\EthosPHP\Ethos</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#MelonSmasher_EthosPHP">MelonSmasher\EthosPHP</a>
+          </li>
+          <li class="separator">Ethos</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#tasks">Tasks</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Ethos.php.xhtml#line16">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MelonSmasher\EthosPHP\</small>Ethos</h1>
+        <h4>Class Ethos</h4>
+        <p>Base class used to build the Ethos session.</p>
+        <ul>
+          <li>Author: Alex Markessinis</li>
+          <li>License: MIT</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Ethos
+            {<br/><ul class="none"><li>// members</li><li>public <span title="GuzzleHttp\Client">Client</span> <a href="#members">$httpClient</a>;
+                    </li><li>public <span title="MelonSmasher\EthosPHP\ErpBackend">ErpBackend</span> <a href="#members">$erpBackend</a>;
+                    </li><li>private string <a href="#members">$_version</a> =
+                        '0.0.1';
+                    </li><li>private <span title="MelonSmasher\EthosPHP\string|null">string|null</span> <a href="#members">$_jwt</a> =
+                        NULL;
+                    </li><li>private  <a href="#members">$_baseURL</a>;
+                    </li><li>private <span title="MelonSmasher\EthosPHP\string|null">string|null</span> <a href="#members">$_secret</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/reauthenticate.xhtml">reauthenticate</a>()
+                    </li><li>private void <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/_authenticate.xhtml">_authenticate</a>()
+                    </li><li>private Client <a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/_buildClient.xhtml">_buildClient</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="tasks">Tasks</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th style="width:3em;">Line</th>
+              <th>Task</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="nummeric">117</td>
+            <td>Auth Error Handling</td>
+          </tr>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="_baseURL"><strong>$_baseURL</strong>
+                —
+                string<br/><span class="indent">Base API URL.</span></li>
+            <li id="_jwt"><strong>$_jwt</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\string|null" href="../classes/MelonSmasher_EthosPHP_string|null.xhtml">MelonSmasher\EthosPHP\string|null</a><br/><span class="indent">JSON Web Token.</span></li>
+            <li id="_secret"><strong>$_secret</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\string|null" href="../classes/MelonSmasher_EthosPHP_string|null.xhtml">MelonSmasher\EthosPHP\string|null</a><br/><span class="indent">API key / secret / refresh token.</span></li>
+            <li id="_version"><strong>$_version</strong>
+                —
+                string<br/><span class="indent">Ethos-php version.</span></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="erpBackend"><strong>$erpBackend</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\ErpBackend" href="../classes/MelonSmasher_EthosPHP_ErpBackend.xhtml">MelonSmasher\EthosPHP\ErpBackend</a><br/><span class="indent">ERP Backend.</span></li>
+            <li id="httpClient"><strong>$httpClient</strong>
+                —
+                <a title="GuzzleHttp\Client" href="../classes/GuzzleHttp_Client.xhtml">GuzzleHttp\Client</a><br/><span class="indent">HTTP Client.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="_authenticate"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/_authenticate.xhtml">_authenticate()</a>
+                — Authenticate with Ethos.</li>
+            <li id="_buildClient"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/_buildClient.xhtml">_buildClient()</a>
+                — Build HTTP client.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/__construct.xhtml">__construct()</a>
+                — Ethos constructor.</li>
+            <li id="reauthenticate"><a title="MelonSmasher\EthosPHP\Ethos" href="../classes/MelonSmasher_EthosPHP_Ethos/reauthenticate.xhtml">reauthenticate()</a>
+                — Re-Authenticate.</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2020-06-19T19:56:20+00:00 (commit #<span title="8ea1eead9cac8f5ca626f108772f94a78866d027">8ea1eea</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">implimented get for all available data-model classes for banner and colleague. All data-models are versioned for the latest version of colleague and banner.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T17:15:02+00:00 (commit #<span title="2367c17d82db59c413de937d6cf30a2eeda7f738">2367c17</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">added support for versioned API calls at the datamodel level.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T16:55:35+00:00 (commit #<span title="ee1e5d545de63311b476eae8fa947ad19469df23">ee1e5d5</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">simplified data classes by moving base get reuqest to the EthosClient</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T15:59:05+00:00 (commit #<span title="f8ca0ce861b416d5d90f8527e630d4b3f291acab">f8ca0ce</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">working on docs</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T14:34:00+00:00 (commit #<span title="2328d94c0b1130920145d928cc8339916bcf9578">2328d94</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">added phploc, phpmd, and phpcs as well as phive for tools</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T04:17:39+00:00 (commit #<span title="3ffd7d03eb99f089b157f512dce3dcd83062ae12">3ffd7d0</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">Set up base consumer client and model specific clients like persons addresses and courses</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-18T19:32:08+00:00 (commit #<span title="65aaaca904fde2df28cf2f7a229f2abc0c12f318">65aaaca</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">updated docs</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-18T19:29:16+00:00 (commit #<span title="6c65e6ca4a61fbc6bd9879136523073953a93c71">6c65e6c</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">started base client class</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-18T18:17:05+00:00 (commit #<span title="e4bdef4d1ef51bef096868e3cabc61a1fbc2c863">e4bdef4</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">started base class</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

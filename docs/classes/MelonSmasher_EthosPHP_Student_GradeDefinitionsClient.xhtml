@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MelonSmasher\EthosPHP\Student\GradeDefinitionsClient</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#MelonSmasher_EthosPHP_Student">MelonSmasher\EthosPHP\Student</a>
+          </li>
+          <li class="separator">GradeDefinitionsClient</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Student/GradeDefinitionsClient.php.xhtml#line26">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MelonSmasher\EthosPHP\Student\</small>GradeDefinitionsClient</h1>
+        <h4>Class GradeDefinitionsClient</h4>
+        <p>GradeDefinitionsClient class used to interact with the `grade-definitions` data type.<br/>Domain: Student<br/>Functional Area: Academic History - Section grades<br/>Model Name: grade-definitions<br/>Banner Read/Write Support: R<br/>Colleague Read/Write Support: R<br/>Banner Data Model Versions Supported: 6<br/>Colleague Data Model Versions Supported: 6</p>
+        <ul>
+          <li>Author: Alex Markessinis</li>
+          <li>License: MIT</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class GradeDefinitionsClient
+                extends <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient.xhtml">EthosClient</a>
+            {<br/><ul class="none"><li>// members</li><li>public <span title="MelonSmasher\EthosPHP\Student\string|bool">string|bool</span> <a href="#members">$bannerApiVersion</a> =
+                        '6';
+                    </li><li>public <span title="MelonSmasher\EthosPHP\Student\string|bool">string|bool</span> <a href="#members">$colleagueApiVersion</a> =
+                        '6';
+                    </li><li>protected <span title="MelonSmasher\EthosPHP\Student\bool">bool</span> <a href="#members">$canCreateColleague</a> =
+                        false;
+                    </li><li>protected <span title="MelonSmasher\EthosPHP\Student\bool">bool</span> <a href="#members">$canReadColleague</a> =
+                        true;
+                    </li><li>protected <span title="MelonSmasher\EthosPHP\Student\bool">bool</span> <a href="#members">$canUpdateColleague</a> =
+                        false;
+                    </li><li>protected <span title="MelonSmasher\EthosPHP\Student\bool">bool</span> <a href="#members">$canDeleteColleague</a> =
+                        false;
+                    </li><li>protected <span title="MelonSmasher\EthosPHP\Student\bool">bool</span> <a href="#members">$canCreateBanner</a> =
+                        false;
+                    </li><li>protected <span title="MelonSmasher\EthosPHP\Student\bool">bool</span> <a href="#members">$canReadBanner</a> =
+                        true;
+                    </li><li>protected <span title="MelonSmasher\EthosPHP\Student\bool">bool</span> <a href="#members">$canUpdateBanner</a> =
+                        false;
+                    </li><li>protected <span title="MelonSmasher\EthosPHP\Student\bool">bool</span> <a href="#members">$canDeleteBanner</a> =
+                        false;
+                    </li><li>protected string <a href="#members">$baseRoute</a> =
+                        '/api/grade-definitions';
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="MelonSmasher\EthosPHP\EthosClient">EthosClient</span></li><li>public <span title="MelonSmasher\EthosPHP\string|bool">string|bool</span> <a href="#members">$bannerApiVersion</a>;
+                        </li><li>public  <a href="#members">$colleagueApiVersion</a>;
+                        </li><li>protected string <a href="#members">$baseRoute</a>;
+                        </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canCreateColleague</a>;
+                        </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canReadColleague</a>;
+                        </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canUpdateColleague</a>;
+                        </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canDeleteColleague</a>;
+                        </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canCreateBanner</a>;
+                        </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canReadBanner</a>;
+                        </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canUpdateBanner</a>;
+                        </li><li>protected <span title="MelonSmasher\EthosPHP\bool">bool</span> <a href="#members">$canDeleteBanner</a>;
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="MelonSmasher\EthosPHP\EthosClient">EthosClient</span></li><li>public void <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/__construct.xhtml">__construct</a>()
+                        </li><li>public static Ethos <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/createSession.xhtml">createSession</a>()
+                        </li><li>public ResponseInterface <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/response.xhtml">response</a>()
+                        </li><li>public array <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/data.xhtml">data</a>()
+                        </li><li>public array <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/toArray.xhtml">toArray</a>()
+                        </li><li>public string <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/toJson.xhtml">toJson</a>()
+                        </li><li>public int <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/responseCode.xhtml">responseCode</a>()
+                        </li><li>public string <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/apiVersion.xhtml">apiVersion</a>()
+                        </li><li>public bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformCreate.xhtml">canPerformCreate</a>()
+                        </li><li>public bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformRead.xhtml">canPerformRead</a>()
+                        </li><li>public bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformUpdate.xhtml">canPerformUpdate</a>()
+                        </li><li>public bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformDelete.xhtml">canPerformDelete</a>()
+                        </li><li>public ResponseInterface|bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/create.xhtml">create</a>()
+                        </li><li>public ResponseInterface|bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/read.xhtml">read</a>()
+                        </li><li>public ResponseInterface|bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/readHead.xhtml">readHead</a>()
+                        </li><li>public ResponseInterface|bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/update.xhtml">update</a>()
+                        </li><li>public ResponseInterface|bool <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/delete.xhtml">delete</a>()
+                        </li><li>protected ResponseInterface <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendGetRequest.xhtml">sendGetRequest</a>()
+                        </li><li>protected ResponseInterface <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendPostRequest.xhtml">sendPostRequest</a>()
+                        </li><li>protected ResponseInterface <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendPutRequest.xhtml">sendPutRequest</a>()
+                        </li><li>protected ResponseInterface <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendDeleteRequest.xhtml">sendDeleteRequest</a>()
+                        </li><li>protected ResponseInterface <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendHeadRequest.xhtml">sendHeadRequest</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient.xhtml">MelonSmasher\EthosPHP\EthosClient</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="baseRoute"><strong>$baseRoute</strong>
+                —
+                string<br/><span class="indent">Base Route</span></li>
+            <li id="baseRoute"><strong>$baseRoute</strong>
+                —
+                string<br/><span class="indent">Base Route</span></li>
+            <li id="canCreateBanner"><strong>$canCreateBanner</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\bool" href="../classes/MelonSmasher_EthosPHP_Student_bool.xhtml">MelonSmasher\EthosPHP\Student\bool</a><br/><span class="indent">Can Create Banner</span></li>
+            <li id="canCreateBanner"><strong>$canCreateBanner</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\bool" href="../classes/MelonSmasher_EthosPHP_bool.xhtml">MelonSmasher\EthosPHP\bool</a><br/><span class="indent">Can Create Banner</span></li>
+            <li id="canCreateColleague"><strong>$canCreateColleague</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\bool" href="../classes/MelonSmasher_EthosPHP_Student_bool.xhtml">MelonSmasher\EthosPHP\Student\bool</a><br/><span class="indent">Can Create Colleague</span></li>
+            <li id="canCreateColleague"><strong>$canCreateColleague</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\bool" href="../classes/MelonSmasher_EthosPHP_bool.xhtml">MelonSmasher\EthosPHP\bool</a><br/><span class="indent">Can Create Colleague</span></li>
+            <li id="canDeleteBanner"><strong>$canDeleteBanner</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\bool" href="../classes/MelonSmasher_EthosPHP_Student_bool.xhtml">MelonSmasher\EthosPHP\Student\bool</a><br/><span class="indent">Can Delete Banner</span></li>
+            <li id="canDeleteBanner"><strong>$canDeleteBanner</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\bool" href="../classes/MelonSmasher_EthosPHP_bool.xhtml">MelonSmasher\EthosPHP\bool</a><br/><span class="indent">Can Delete Banner</span></li>
+            <li id="canDeleteColleague"><strong>$canDeleteColleague</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\bool" href="../classes/MelonSmasher_EthosPHP_Student_bool.xhtml">MelonSmasher\EthosPHP\Student\bool</a><br/><span class="indent">Can Delete Colleague</span></li>
+            <li id="canDeleteColleague"><strong>$canDeleteColleague</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\bool" href="../classes/MelonSmasher_EthosPHP_bool.xhtml">MelonSmasher\EthosPHP\bool</a><br/><span class="indent">Can Delete Colleague</span></li>
+            <li id="canReadBanner"><strong>$canReadBanner</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\bool" href="../classes/MelonSmasher_EthosPHP_Student_bool.xhtml">MelonSmasher\EthosPHP\Student\bool</a><br/><span class="indent">Can Read Banner</span></li>
+            <li id="canReadBanner"><strong>$canReadBanner</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\bool" href="../classes/MelonSmasher_EthosPHP_bool.xhtml">MelonSmasher\EthosPHP\bool</a><br/><span class="indent">Can Read Banner</span></li>
+            <li id="canReadColleague"><strong>$canReadColleague</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\bool" href="../classes/MelonSmasher_EthosPHP_Student_bool.xhtml">MelonSmasher\EthosPHP\Student\bool</a><br/><span class="indent">Can Read Colleague</span></li>
+            <li id="canReadColleague"><strong>$canReadColleague</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\bool" href="../classes/MelonSmasher_EthosPHP_bool.xhtml">MelonSmasher\EthosPHP\bool</a><br/><span class="indent">Can Read Colleague</span></li>
+            <li id="canUpdateBanner"><strong>$canUpdateBanner</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\bool" href="../classes/MelonSmasher_EthosPHP_Student_bool.xhtml">MelonSmasher\EthosPHP\Student\bool</a><br/><span class="indent">Can Update Banner</span></li>
+            <li id="canUpdateBanner"><strong>$canUpdateBanner</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\bool" href="../classes/MelonSmasher_EthosPHP_bool.xhtml">MelonSmasher\EthosPHP\bool</a><br/><span class="indent">Can Update Banner</span></li>
+            <li id="canUpdateColleague"><strong>$canUpdateColleague</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\bool" href="../classes/MelonSmasher_EthosPHP_Student_bool.xhtml">MelonSmasher\EthosPHP\Student\bool</a><br/><span class="indent">Can Update Colleague</span></li>
+            <li id="canUpdateColleague"><strong>$canUpdateColleague</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\bool" href="../classes/MelonSmasher_EthosPHP_bool.xhtml">MelonSmasher\EthosPHP\bool</a><br/><span class="indent">Can Update Colleague</span></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="bannerApiVersion"><strong>$bannerApiVersion</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\string|bool" href="../classes/MelonSmasher_EthosPHP_Student_string|bool.xhtml">MelonSmasher\EthosPHP\Student\string|bool</a><br/><span class="indent">API Version Banner</span></li>
+            <li id="bannerApiVersion"><strong>$bannerApiVersion</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\string|bool" href="../classes/MelonSmasher_EthosPHP_string|bool.xhtml">MelonSmasher\EthosPHP\string|bool</a><br/><span class="indent">API Version Banner</span></li>
+            <li id="colleagueApiVersion"><strong>$colleagueApiVersion</strong>
+                —
+                <a title="MelonSmasher\EthosPHP\Student\string|bool" href="../classes/MelonSmasher_EthosPHP_Student_string|bool.xhtml">MelonSmasher\EthosPHP\Student\string|bool</a><br/><span class="indent">API Version for Colleague</span></li>
+            <li id="colleagueApiVersion"><strong>$colleagueApiVersion</strong>
+                —
+                string<br/><span class="indent">API Version for Colleague</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h3>Inherited from <a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient.xhtml">MelonSmasher\EthosPHP\EthosClient</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="sendDeleteRequest"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendDeleteRequest.xhtml">sendDeleteRequest()</a>
+                — SendDeleteRequest</li>
+            <li id="sendGetRequest"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendGetRequest.xhtml">sendGetRequest()</a>
+                — SendGetRequest</li>
+            <li id="sendHeadRequest"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendHeadRequest.xhtml">sendHeadRequest()</a>
+                — SendHeadRequest</li>
+            <li id="sendPostRequest"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendPostRequest.xhtml">sendPostRequest()</a>
+                — SendPostRequest</li>
+            <li id="sendPutRequest"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/sendPutRequest.xhtml">sendPutRequest()</a>
+                — SendPutRequest</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="apiVersion"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/apiVersion.xhtml">apiVersion()</a>
+                — API Version</li>
+            <li id="canPerformCreate"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformCreate.xhtml">canPerformCreate()</a>
+                — Can Create</li>
+            <li id="canPerformDelete"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformDelete.xhtml">canPerformDelete()</a>
+                — Can Delete</li>
+            <li id="canPerformRead"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformRead.xhtml">canPerformRead()</a>
+                — Can Read</li>
+            <li id="canPerformUpdate"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/canPerformUpdate.xhtml">canPerformUpdate()</a>
+                — Can Update</li>
+            <li id="create"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/create.xhtml">create()</a>
+                — Create</li>
+            <li id="createSession"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/createSession.xhtml">createSession()</a>
+                — CreateSession</li>
+            <li id="data"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/data.xhtml">data()</a>
+                — Data</li>
+            <li id="delete"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/delete.xhtml">delete()</a>
+                — Delete</li>
+            <li id="read"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/read.xhtml">read()</a>
+                — Read</li>
+            <li id="readHead"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/readHead.xhtml">readHead()</a>
+                — Read Head</li>
+            <li id="response"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/response.xhtml">response()</a>
+                — Response</li>
+            <li id="responseCode"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/responseCode.xhtml">responseCode()</a>
+                — Response Code</li>
+            <li id="toArray"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/toArray.xhtml">toArray()</a>
+                — To Array</li>
+            <li id="toJson"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/toJson.xhtml">toJson()</a>
+                — To JSON</li>
+            <li id="update"><a title="MelonSmasher\EthosPHP\EthosClient" href="../classes/MelonSmasher_EthosPHP_EthosClient/update.xhtml">update()</a>
+                — Update</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2020-06-19T23:04:49+00:00 (commit #<span title="b9747fe6b7e210c13bda23c291addf8e3c5ad833">b9747fe</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">clients now know which CRUD operations are avilable per ERP backend.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-19T19:56:20+00:00 (commit #<span title="8ea1eead9cac8f5ca626f108772f94a78866d027">8ea1eea</span>)</h3>
+            <div>
+              <p>
+                        Author: Alex Markessinis (markea125@gmail.com) /
+                        Commiter: Alex Markessinis (markea125@gmail.com)
+                    </p>
+              <pre class="wrapped">implimented get for all available data-model classes for banner and colleague. All data-models are versioned for the latest version of colleague and banner.</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
