@@ -15,7 +15,7 @@ composer require melonsmasher/ethos-php
 
 ## API Docs
 
-Complete API docs can be [found here](https://melonsmasher.github.io/ethos-php/docs/html/).
+Complete API docs can be [found here](https://melonsmasher.github.io/ethos-php/docs/).
 
 ## Features
 
