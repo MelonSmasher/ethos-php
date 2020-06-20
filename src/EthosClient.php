@@ -396,6 +396,29 @@ class EthosClient
     }
 
     /**
+     * Read by ID
+     *
+     * Performs a GET on the ID based route with any additional params or headers supplied.
+     *
+     * @param string $id
+     * @param array $params
+     * @param array $headers
+     *
+     * @return bool|EthosClient
+     *
+     * @throws GuzzleException
+     */
+    public function readById($id, $params = [], $headers = [])
+    {
+        if ($this->canPerformRead()) {
+            return $this->sendGetRequest($this->baseRoute . '/' . $id, $params, $headers);
+        }
+
+        trigger_error('Unable to perform read action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
+    }
+
+    /**
      * Read Head
      *
      * Performs a HEAD on the base route with any additional params or headers supplied.
@@ -414,6 +437,29 @@ class EthosClient
         }
 
         trigger_error('Unable to perform read head action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
+    }
+
+    /**
+     * Read head by ID
+     *
+     * Performs a HEAD on the ID based route with any additional params or headers supplied.
+     *
+     * @param string $id
+     * @param array $params
+     * @param array $headers
+     *
+     * @return bool|EthosClient
+     *
+     * @throws GuzzleException
+     */
+    public function readHeadById($id, $params = [], $headers = [])
+    {
+        if ($this->canPerformRead()) {
+            return $this->sendHeadRequest($this->baseRoute . '/' . $id, $params, $headers);
+        }
+
+        trigger_error('Unable to perform read action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
         return false;
     }
 
@@ -441,6 +487,30 @@ class EthosClient
     }
 
     /**
+     * Update by ID
+     *
+     * Performs a PUT on the ID based route with any additional params or headers supplied.
+     *
+     * @param string $id
+     * @param $data
+     * @param array $params
+     * @param array $headers
+     *
+     * @return EthosClient|bool
+     *
+     * @throws GuzzleException
+     */
+    public function updateById($id, $data, $params = [], $headers = [])
+    {
+        if ($this->canPerformUpdate()) {
+            return $this->sendPutRequest($this->baseRoute . '/' . $id, $data, $params, $headers);
+        }
+
+        trigger_error('Unable to perform update action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
+    }
+
+    /**
      * Delete
      *
      * Performs a DELETE on the base route with any additional params or headers supplied.
@@ -456,6 +526,29 @@ class EthosClient
     {
         if ($this->canPerformDelete()) {
             return $this->sendDeleteRequest($this->baseRoute, $params, $headers);
+        }
+
+        trigger_error('Unable to perform delete action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
+        return false;
+    }
+
+    /**
+     * Delete by ID
+     *
+     * Performs a DELETE on the ID based route with any additional params or headers supplied.
+     *
+     * @param string $id
+     * @param array $params
+     * @param array $headers
+     *
+     * @return EthosClient|bool
+     *
+     * @throws GuzzleException
+     */
+    public function deleteById($id, $params = [], $headers = [])
+    {
+        if ($this->canPerformDelete()) {
+            return $this->sendDeleteRequest($this->baseRoute . '/' . $id, $params, $headers);
         }
 
         trigger_error('Unable to perform delete action for selected ERP backend ' . $this->_ethos->erpBackend, E_USER_WARNING);
@@ -649,6 +742,6 @@ class EthosClient
         // Set the response
         $this->_response = $response;
 
-        return  $this;
+        return $this;
     }
 }

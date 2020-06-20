@@ -2,8 +2,11 @@
 
 A PHP library to interact with the Ellucian Ethos API.
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/MelonSmasher/ethos-php.svg)](https://github.com/MelonSmasher/ethos-php/issues)
+[![License](https://img.shields.io/badge/license-MIT-blue)](https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/MelonSmasher/ethos-php)](https://github.com/MelonSmasher/ethos-php/issues)
+![GitHub top language](https://img.shields.io/github/languages/top/MelonSmasher/ethos-php)
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/MelonSmasher/ethos-php)
+![Codacy grade](https://img.shields.io/codacy/grade/921b4278b9af4971b4003c874a52abdf)
 
 ----
 
@@ -21,19 +24,21 @@ Complete API docs can be [found here](https://melonsmasher.github.io/ethos-php/d
 
 As of now `ethos-php` has support for `317` models/routes. It supports nearly all Banner & Colleague models with the following feature set.
 
-* A fluent API allowing for methods to be chained to improve readability.
-* Convenience methods that return the response data as an object: `data()`, as an array: `toArray()`, and as a JSON string: `toJson()`. 
-* Simple control over API pagination. Max ten items returned per-page.
-* Automatic re-authentication when a session expires.
-* Support for Banner and Colleague backends.
-* Automatically versioned API calls.
-* Control over request params and headers.
-* Class level awareness of Ethos CRUD support.
+*  A fluent API allowing for methods to be chained to improve readability.
+*  Convenience methods that return the response data as an object: `data()`, as an array: `toArray()`, and as a JSON string: `toJson()`. 
+*  Simple control over API pagination. Max ten items returned per-page.
+*  Automatic re-authentication when a session expires.
+*  Support for Banner and Colleague backends.
+*  Automatically versioned API calls.
+*  Control over request params and headers.
+*  Class level awareness of Ethos CRUD support.
+*  Support for ID based routes. E.G. `/api/persons/35b16136-bafd-4b5d-9dd2-995ad9f4ba00`
 
 ## Features To Come
 
-* Support for the `/consume` message queue route.
-* Support for ID based routes. E.G. `/api/persons/35b16136-bafd-4b5d-9dd2-995ad9f4ba00`
+*  Pub/Sub support
+    *  Support for the `/consume` message queue route.
+    *  Support for the `/publish` message queue route.
 
 ## Usage/Examples
 
