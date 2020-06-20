@@ -38,7 +38,10 @@
       "tools/phploc --log-xml=build/phploc.xml src",
       "tools/phpmd src xml  cleancode,design,unusedcode > build/pmd.xml || true",
       "tools/phpcs --report=xml --report-file=build/phpcs.xml src/ || true",
-      "tools/phpdox"
+      "tools/phpdox",
+      "mv docs/html .docs",
+      "mv .docs/* docs/",
+      "rm -rf .docs/"
     ]
   },
   "prefer-stable": true,
