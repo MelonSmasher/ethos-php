@@ -128,6 +128,8 @@ final class Ethos
     public function setJWT($jwt)
     {
         $this->_jwt = $jwt;
+        // Build an HTTP client that uses the JWT / session token
+        $this->_buildClient();
     }
 
     /**
