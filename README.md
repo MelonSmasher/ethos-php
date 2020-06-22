@@ -22,7 +22,7 @@ Complete API docs can be [found here](https://melonsmasher.github.io/ethos-php/d
 
 ## Features
 
-As of now `ethos-php` has support for `317` models/routes. It supports nearly all Banner & Colleague models with the following feature set.
+As of now `ethos-php` has support for `316` models/routes. It supports nearly all Banner & Colleague models with the following feature set.
 
 *  A fluent API allowing for methods to be chained to improve readability.
 *  Convenience methods that return the response data as an object: `data()`, as an array: `toArray()`, and as a JSON string: `toJson()`. 
