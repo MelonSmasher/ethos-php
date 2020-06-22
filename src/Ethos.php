@@ -77,8 +77,9 @@ final class Ethos
      * @param $secret
      * @param string $baseURL
      * @param ErpBackend $erpBackend
+     * @param string $jwt
      */
-    public function __construct($secret, $baseURL, $erpBackend)
+    public function __construct($secret, $baseURL, $erpBackend, $jwt = '')
     {
         // Set the secret property
         $this->_secret = $secret;
@@ -86,8 +87,10 @@ final class Ethos
         $this->_baseURL = $baseURL;
         // Set the ERP backend
         $this->erpBackend = $erpBackend;
-        // Requests a JWT/Session token using the secret and builds a new http client
-        $this->reAuthenticate();
+        // Request a JWT/Session token, if we don't have one, using the secret and builds a new http client
+        if (empty($jwt)) $this->reAuthenticate();
+        // If we have a JWT set it
+        if(!empty($jwt)) $this->setJWT($jwt);
     }
 
     /**
@@ -104,6 +107,30 @@ final class Ethos
     }
 
     /**
+     * Get JWT
+     *
+     * Gets the JWT for this Ethos session.
+     *
+     * @return string|null
+     */
+    public function getJWT()
+    {
+        return $this->_jwt;
+    }
+
+    /**
+     * Set JWT
+     *
+     * Sets the JWT for this Ethos session.
+     *
+     * @param $jwt
+     */
+    public function setJWT($jwt)
+    {
+        $this->_jwt = $jwt;
+    }
+
+    /**
      * Authenticate with Ethos.
      *
      * Authenticates with Ethos and sets the `jwt` class property.
@@ -113,7 +140,7 @@ final class Ethos
         // Build a temporary HTTP client using the API key / secret / refresh token
         $httpAuthClient = $this->_buildClient($this->_secret);
         // Send the request and store the JWT
-        $this->_jwt = $httpAuthClient->post('/auth')->getBody()->getContents();
+        $this->setJWT($httpAuthClient->post('/auth')->getBody()->getContents());
         // @todo Auth Error Handling
     }
 
