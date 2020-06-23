@@ -151,3 +151,5 @@ composer
 .php_cs.cache
 ethosClasses.json
 genClasses.py
+genTest.py
+test2.php

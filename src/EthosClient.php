@@ -161,10 +161,12 @@ class EthosClient
      * The base Ethos API client.
      *
      * @param Ethos $ethos
+     * @return EthosClient;
      */
     public function __construct(Ethos $ethos)
     {
         $this->_ethos = $ethos;
+        return $this;
     }
 
     /**
@@ -184,15 +186,31 @@ class EthosClient
     }
 
     /**
+     * Set Session
+     *
+     * Sets the active Ethos Session.
+     *
+     * @param Ethos $ethos
+     * @return EthosClient
+     */
+    public function setSession(Ethos $ethos)
+    {
+        $this->_ethos = $ethos;
+        return $this;
+    }
+
+    /**
      * Next Page
      *
      * Moves the page counter forward by the increment supplied. Default increment is 1.
      *
      * @param int $inc
+     * @return EthosClient
      */
     public function nextPage($inc = 1)
     {
         $this->page += $inc;
+        return $this;
     }
 
     /**
@@ -201,11 +219,13 @@ class EthosClient
      * Moves the page counter back by the increment supplied. Default increment is 1.
      *
      * @param int $inc
+     * @return EthosClient
      */
     public function backPage($inc = 1)
     {
         $this->page -= $inc;
         if ($this->page < 1) $this->page = 1;
+        return $this;
     }
 
     /**
@@ -214,11 +234,53 @@ class EthosClient
      * Sets the current page to the supplied number. The first page is 1.
      *
      * @param $number
+     * @return EthosClient
      */
     public function setPage($number = 1)
     {
         $this->page = $number;
         if ($this->page < 1) $this->page = 1;
+        return $this;
+    }
+
+    /**
+     * Get Page
+     *
+     * Returns the current page number.
+     *
+     * @return int
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * Get Offset
+     *
+     * This dynamically determines the page offset based on the page number.
+     *
+     * @return int
+     */
+    public function getOffset()
+    {
+        if ($this->page <= 1) return 0;
+        return intval($this->page * $this->perPageLimit);
+    }
+
+    /**
+     * Get Offset
+     *
+     * Returns the current page offset.
+     *
+     * @param $int
+     * @return EthosClient
+     */
+    public function setOffset($int)
+    {
+        $o = $int / $this->perPageLimit;
+        $this->page = ($o < 1) ? 0 : $o;
+        return $this;
     }
 
     /**
@@ -556,6 +618,18 @@ class EthosClient
     }
 
     /**
+     * Reauthenticate
+     *
+     * Renews the Ethos session.
+     *
+     * @return void
+     */
+    public function reauthenticate()
+    {
+        $this->_ethos->reauthenticate();
+    }
+
+    /**
      * SendGetRequest
      *
      * Low level HTTP GET interface
@@ -652,19 +726,6 @@ class EthosClient
     }
 
     /**
-     * Offset
-     *
-     * This dynamically determines the page offset based on the page number.
-     *
-     * @return int
-     */
-    private function _offset()
-    {
-        if ($this->page <= 1) return 0;
-        return intval($this->page * $this->perPageLimit);
-    }
-
-    /**
      * _request
      *
      * Low level HTTP request interface
@@ -699,7 +760,7 @@ class EthosClient
         }
 
         // Set the page offset
-        $params['offset'] = $this->_offset();
+        $params['offset'] = $this->getOffset();
         // Set the result limit
         $params['limit'] = $this->perPageLimit;
 
@@ -722,7 +783,7 @@ class EthosClient
             // If an exception was thrown check to see if it was a 401
             if ($e->getResponse()->getStatusCode() === 401) {
                 // If it was a 401, reauthenticate
-                $this->_ethos->reauthenticate();
+                $this->reauthenticate();
                 // Try to send the request once more
                 // Throw an exception this time if things don't go well
                 $response = $this->_ethos->httpClient->request($method, $uri, $options);
