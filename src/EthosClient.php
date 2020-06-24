@@ -622,11 +622,13 @@ class EthosClient
      *
      * Renews the Ethos session.
      *
-     * @return void
+     * @return EthosClient
      */
     public function reauthenticate()
     {
         $this->_ethos->reauthenticate();
+
+        return $this;
     }
 
     /**
