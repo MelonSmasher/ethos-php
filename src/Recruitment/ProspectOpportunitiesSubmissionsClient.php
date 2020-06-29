@@ -114,7 +114,16 @@
          * @var bool
          */
         protected $canDeleteBanner = false;
-    
+
+        /**
+         * Accept Header Modifier
+         *
+         * Used to modify the accept header for models like sections-maximum.
+         *
+         * @var string
+         */
+        public $acceptModifier = 'prospect-opportunities-submissions.';
+
         /**
          * Base Route
          *
@@ -122,5 +131,5 @@
          *
          * @var string
          */
-        protected $baseRoute = '/api/prospect-opportunities-submissions';
+        protected $baseRoute = '/api/prospect-opportunities';
     }

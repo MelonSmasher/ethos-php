@@ -39,6 +39,15 @@ class EthosClient
     public $colleagueApiVersion;
 
     /**
+     * Accept Header Modifier
+     *
+     * Used to modify the accept header for models like sections-maximum.
+     *
+     * @var string
+     */
+    public $acceptModifier = '';
+
+    /**
      * Base Route
      *
      * The base API route.
@@ -752,8 +761,8 @@ class EthosClient
             // If not, check our version string.
             // If the version string is empty send an unversioned API call.
             // If the version string is set create the Accept header.
-            $headers['Accept'] = (empty($this->apiVersion())) ? '*/*' : 'application/vnd.hedtech.integration.v' . $this->apiVersion() . '+json';
-            $headers['content-type'] = (empty($this->apiVersion())) ? '*/*' : 'application/vnd.hedtech.integration.v' . $this->apiVersion() . '+json';
+            $headers['Accept'] = (empty($this->apiVersion())) ? '*/*' : 'application/vnd.hedtech.integration.' . $this->acceptModifier . 'v' . $this->apiVersion() . '+json';
+            $headers['content-type'] = (empty($this->apiVersion())) ? '*/*' : 'application/vnd.hedtech.integration.' . $this->acceptModifier . 'v' . $this->apiVersion() . '+json';
             // If there is no API version available for the selected backend throw a warning
             if ($this->apiVersion() === false) {
                 trigger_error('No data model version available for selected ERP backend '

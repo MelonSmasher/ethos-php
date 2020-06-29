@@ -1,11 +1,11 @@
 <?php
-    
-    
+
+
     namespace MelonSmasher\EthosPHP\Student;
-    
-    
+
+
     use MelonSmasher\EthosPHP\EthosClient;
-    
+
     /**
      * Class SectionsMaximumClient
      *
@@ -33,7 +33,7 @@
          * @var string|bool
          */
         public $bannerApiVersion = '16.0.0';
-    
+
         /**
          * API Version for Colleague
          *
@@ -114,7 +114,16 @@
          * @var bool
          */
         protected $canDeleteBanner = false;
-    
+
+        /**
+         * Accept Header Modifier
+         *
+         * Used to modify the accept header for models like sections-maximum.
+         *
+         * @var string
+         */
+        public $acceptModifier = 'sections-maximum.';
+
         /**
          * Base Route
          *
@@ -122,5 +131,5 @@
          *
          * @var string
          */
-        protected $baseRoute = '/api/sections-maximum';
+        protected $baseRoute = '/api/sections';
     }

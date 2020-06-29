@@ -114,7 +114,16 @@
          * @var bool
          */
         protected $canDeleteBanner = false;
-    
+
+        /**
+         * Accept Header Modifier
+         *
+         * Used to modify the accept header for models like sections-maximum.
+         *
+         * @var string
+         */
+        public $acceptModifier = 'student-unverified-grades-submissions.';
+
         /**
          * Base Route
          *
@@ -122,5 +131,5 @@
          *
          * @var string
          */
-        protected $baseRoute = '/api/student-unverified-grades-submissions';
+        protected $baseRoute = '/api/student-unverified-grades';
     }
