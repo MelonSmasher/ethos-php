@@ -49,7 +49,6 @@ following feature set.
 *   Pub/Sub support
     
     *   Support for the `/consume` message queue route.
-        
     *   Support for the `/publish` message queue route.
 
 ## Usage/Examples
