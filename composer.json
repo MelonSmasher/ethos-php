@@ -18,8 +18,8 @@
   "require": {
     "php": ">=7.2.0",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "~6.0",
-    "myclabs/php-enum": "^1.7"
+    "guzzlehttp/guzzle": "~7.0",
+    "myclabs/php-enum": "^1.8"
   },
   "require-dev": {
   },

@@ -40,7 +40,7 @@ final class Ethos
      *
      * @var string
      */
-    private $_version = '0.0.1';
+    private $_version = '0.1.0';
 
     /**
      * JSON Web Token.
