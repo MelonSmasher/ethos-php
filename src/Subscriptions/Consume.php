@@ -11,7 +11,7 @@ use MelonSmasher\EthosPHP\Exception\UnsupportedOperationException;
  * Class Consume
  *
  * Consume class used to interact with the `consume` resource.
- * Domain: Admin
+ * Domain: Subscriptions
  * Model Name: consume
  * Banner Read/Write Support: R
  * Colleague Read/Write Support: R

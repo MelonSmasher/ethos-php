@@ -10,6 +10,7 @@ use Exception;
 /**
  * Class UnsupportedOperationException
  *
+ * Exception used for invalid and unsupported methods on derivative classes.
  * @package MelonSmasher\EthosPHP\Exception
  * @license MIT
  * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
