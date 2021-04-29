@@ -44,12 +44,11 @@ following feature set.
     
 *   Support for ID based routes. E.G. `/api/persons/35b16136-bafd-4b5d-9dd2-995ad9f4ba00`
 
+*   Support for the `/consume` subscription message queue route.
+
 ## Features To Come
 
-*   Pub/Sub support
-    
-    *   Support for the `/consume` message queue route.
-    *   Support for the `/publish` message queue route.
+*   Support for the `/publish` subscription message queue route.
 
 ## Usage/Examples
 
