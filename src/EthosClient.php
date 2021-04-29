@@ -5,6 +5,7 @@ namespace MelonSmasher\EthosPHP;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use MelonSmasher\EthosPHP\Exception\UnsupportedOperationException;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -13,7 +14,7 @@ use Psr\Http\Message\ResponseInterface;
  * Base class used to set the API key (a.k.a. refresh token), API base URL, and API version.
  * Also used for low level API communication.
  *
- * @package MelonSmasher
+ * @package MelonSmasher\EthosPHP
  * @license MIT
  * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
  * @author Alex Markessinis
@@ -771,9 +772,9 @@ class EthosClient
         }
 
         // Set the page offset
-        $params['offset'] = $this->getOffset();
+        if ($this->page) $params['offset'] = $this->getOffset();
         // Set the result limit
-        $params['limit'] = $this->perPageLimit;
+        if ($this->perPageLimit) $params['limit'] = $this->perPageLimit;
 
         // Set any query params and merge any new headers with the main header array
         $options = [

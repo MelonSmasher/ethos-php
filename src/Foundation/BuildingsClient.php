@@ -18,7 +18,7 @@
      * Banner Data Model Versions Supported: 6
      * Colleague Data Model Versions Supported: 6, 11
      *
-     * @package MelonSmasher
+     * @package MelonSmasher\EthosPHP\Foundation
      * @license MIT
      * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
      * @author Alex Markessinis

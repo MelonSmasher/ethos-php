@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
  *
  * Base class used to build the Ethos session.
  *
+ * @package MelonSmasher\EthosPHP
  * @license MIT
  * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
  * @author Alex Markessinis

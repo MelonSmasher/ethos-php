@@ -18,7 +18,7 @@
      * Banner Data Model Versions Supported: 16.0.0 BETA
      * Colleague Data Model Versions Supported: 16.0.0 BETA
      *
-     * @package MelonSmasher
+     * @package MelonSmasher\EthosPHP\Recruitment
      * @license MIT
      * @license https://raw.githubusercontent.com/MelonSmasher/ethos-php/master/LICENSE MIT License
      * @author Alex Markessinis

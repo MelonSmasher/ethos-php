@@ -1,7 +1,16 @@
 {
   "name": "melonsmasher/ethos-php",
   "description": "A PHP library to interact with the Ellucian Ethos API.",
-  "keywords": ["ellucian", "ethos", "banner", "colleague", "api", "erp", "college", "higher-ed"],
+  "keywords": [
+    "ellucian",
+    "ethos",
+    "banner",
+    "colleague",
+    "api",
+    "erp",
+    "college",
+    "higher-ed"
+  ],
   "type": "library",
   "homepage": "https://github.com/MelonSmasher/ethos-php",
   "license": "MIT",
@@ -33,7 +42,9 @@
       "MelonSmasher\\EthosPHP\\HumanResources\\": "src/HumanResources/",
       "MelonSmasher\\EthosPHP\\Recruitment\\": "src/Recruitment/",
       "MelonSmasher\\EthosPHP\\Student\\": "src/Student/",
-      "MelonSmasher\\EthosPHP\\Util\\": "src/Util/"
+      "MelonSmasher\\EthosPHP\\Util\\": "src/Util/",
+      "MelonSmasher\\EthosPHP\\Exception\\": "src/Exception/",
+      "MelonSmasher\\EthosPHP\\Subscriptions\\": "src/Subscriptions/"
     }
   },
   "scripts": {
